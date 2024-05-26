@@ -110,12 +110,10 @@ def inversa():
         r_s = ["r", "losreales", "todoslosreales", "todoslosnumerosreales"]
         print(d)
         r_u = input("Dominio: ").lower().strip().replace(" ", "")
-        if r_u in r_s:
-            r_u2 = input("Rango: ").lower().strip().replace(" ", "")
-            if r_u2 in r_s:
-                print("¡Correcto!")
-            else:
-                print("¡Incorrecto!")
+        r_u2 = input("Rango: ").lower().strip().replace(" ", "")
+        if r_u and r_u2 in r_s:
+            print("¡Correcto!")
+            
         else:
             print("¡Incorrecto!")
     
