@@ -1,5 +1,6 @@
 import random 
 
+
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funcion_aleatoria = random.choice(funciones)
     if funcion_aleatoria == 'Funcion Lineal':
@@ -62,6 +63,9 @@ if __name__ == '__main__':
     "Funcion Inversa"
     ]
     operandos = ["+", "-"]
+    valores_m = [i for i in range(0, 20)]
+    valores_b = [i for i in range(0, 20)]
+    valores_b = random.choice(valores_b)
+    valores_m = random.choice(valores_m)
 
-
-lineal(5, 1)
+lineal(valores_m, valores_b)
