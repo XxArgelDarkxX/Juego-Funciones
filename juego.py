@@ -28,40 +28,44 @@ def lineal(m, b):
     print(f"¡Rapido analiza la siguiente funcion: {m}x {operador} {b} ")
 
 def cuadratica():
-    valores_a = [i for i in range(1, 20)]  # Evitar que 'a' sea 0
-    valores_b = [i for i in range(0, 20)]
-    valores_c = [i for i in range(0, 20)]
-    a = random.choice(valores_a)
-    b = random.choice(valores_b)
-    c = random.choice(valores_c)
+    eleccion = random.randint(1, 3)
+    ecuaciones_cuadraticas = [
+    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
+    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
+    ("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
+    ("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
+    ("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
+]
 
-    # Elegir operadores para b y c
-    operador_b = random.choice(operandos)
-    operador_c = random.choice(operandos)
+    ecuacion,soluciones,soluciones_vertice,rango_Dominio = random.choice(ecuaciones_cuadraticas)
+    print(f"¡Rapido analiza la siguiente funcion: {ecuacion}")
     
-    # Construir la ecuación con los operadores
-    print(f"¡Rápido, analiza la siguiente función: {a}x^2 {operador_b} {b}x {operador_c} {c} ")
-    print("Encuentra los cortes con el eje x y el eje y")
-    
-    corte_x1 = float(input("Corte con el eje x 1: "))
-    corte_x2 = float(input("Corte con el eje x 2: "))
-    corte_y = float(input("Corte con el eje y: "))
-    
-    d = b**2 - 4*a*c
-    if d < 0:
-        return "No real roots"
+    if eleccion == 1:
+        
+        print("calcula los cortes con x y y")
+        corte_x1 = int(input("Corte con x1: "))
+        corte_x2 = int(input("Corte con x2: "))
+        corte_y = int(input("Corte con y: "))
+        if [corte_x1, corte_x2, corte_y] == soluciones:
+            print("Correcto")
+        else:
+            print("Incorrecto")
+    elif eleccion == 2:
+        print("Calcula el vertice de la parabola")
+        vertice_x = int(input("Vertice x: "))
+        vertice_y = int(input("Vertice y: "))
+        if [vertice_x, vertice_y] == soluciones_vertice:
+            print("Correcto")
+        else:
+            print("Incorrecto")
     else:
-        root1 = (-b + math.sqrt(d)) / (2*a)
-        root2 = (-b - math.sqrt(d)) / (2*a)
-
-    # calculate y intercept
-    y_intercept = c
-    
-    if corte_x1 == root1 and corte_x2 == root2 and corte_y == y_intercept:
-        print("Correcto")
-    else:
-        print("Incorrecto")
-
+        print("calcula en rango y dominio de la funcion")
+        dom = input("Dominio: ")
+        ran = input("Rango: ")
+        if [dom, ran] == rango_Dominio:
+            print("Correcto")
+        else:
+            print("Incorrecto")
 def cubica():
     pass
 
