@@ -2,13 +2,19 @@ import random
 import math
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funcion_aleatoria = random.choice(funciones)
+    funcion_aleatoria = 'Funcion Lineal'
     if funcion_aleatoria == 'Funcion Lineal':
-        lineal()
+        m = random.choice([i for i in range(0,20)])
+        b = random.choice([i for i in range(0,20)])
+        lineal(m, b)
     elif funcion_aleatoria == 'Funcion Cuadratica':
         cuadratica()
     elif funcion_aleatoria == 'Funcion Cubica':
-        cubica()
+        a = random.choice([i for i in range(0,20)])
+        b = random.choice([i for i in range(0,20)])
+        c = random.choice([i for i in range(0,20)])
+        d = random.choice([i for i in range(0,20)])
+        cubica(a,b,c,d)
     elif funcion_aleatoria == 'Funcion Raiz Cuadrada':
         f_raiz_cuadrada()
     elif funcion_aleatoria == 'Funcion Logaritmica':
@@ -23,9 +29,59 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
         inversa()
 
 def lineal(m, b):
-    
     operador = random.choice(operandos)
-    print(f"¡Rapido analiza la siguiente funcion: {m}x {operador} {b} ")
+    preguntas = ["Cual es el dominio y el rango", "Cuales son los cortes con x y con y", "Es creciente, decreciente o constante"]
+    pregunta = random.choice(preguntas)
+    print(f"¡Rapido analiza la siguiente funcion {m}x {operador} {b}")
+    if pregunta == preguntas[0]:
+        dominio = "todos los reales"
+        rango = "todos los reales"
+        print(pregunta)
+        respuesta_dominio = input("Su respuesta al dominio: ")
+        respuesta_rango = input("Su respuesta al rango: ")
+        if respuesta_dominio.lower() == dominio and respuesta_rango.lower() == rango:
+            print("Correcto")
+        else:
+            print("Incorrecto")
+    elif pregunta == preguntas[1]:
+        if b != 0 or m == 0:
+            corte_y = f"0,{b}"
+            x = -b / m if m != 0 else None  
+            if x is not None:
+                corte_x = f"{round(x, 2)},0"
+            else:
+                corte_x = ""
+            print(pregunta)
+            respuesta_x = input("Su respuesta del corte con x(el formato para escribir es x,0 y si no tiene cortes con x, simplemente das enter sin hacer nada mas): ")
+            respuesta_y = input("Su respuesta del corte con y(el formato para escribir es 0,y): ")
+            if respuesta_x == corte_x and respuesta_y == corte_y:
+                print("Correcto")
+            else:
+                print(f"Incorrecto, la respuesta correcta era {corte_x}")
+        else:
+            corte_x = "0,0"
+            corte_y = "0,0"
+            print(pregunta)
+            respuesta_x = input("Su respuesta del corte con x(el formato para escribir es x,0 y si no tiene cortes con x, simplemente das enter sin hacer nada mas): " )
+            respuesta_y = input("Su respuesta del corte con y(el formato para escribir es 0,y): ")
+            if respuesta_x == corte_x and respuesta_y == corte_y:
+                print("Correcto")
+            else:
+                print("Incorrecto")
+
+    elif pregunta == preguntas[2]:
+        if m > 0:
+            respuesta = "creciente"
+        elif m < 0:
+            respuesta = "decreciente"
+        else:
+            respuesta = "constante"
+        print(pregunta)
+        tu_respuesta = input("Su respuesta: ")
+        if tu_respuesta == respuesta:
+            print("Correcto")
+        else:
+            print("Incorrecto")
 
 def cuadratica():
     eleccion = random.randint(1, 3)
