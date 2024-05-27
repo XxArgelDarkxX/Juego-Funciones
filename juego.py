@@ -28,15 +28,22 @@ def lineal(m, b):
     print(f"¡Rapido analiza la siguiente funcion: {m}x {operador} {b} ")
 
 def cuadratica():
+    
+    # seleciona un problema aleatorio
+
     eleccion = random.randint(1, 3)
+    
+    # lista de ecuaciones cuadraticas con sus soluciones,cortes x y y, vertice y rango,dominio
     ecuaciones_cuadraticas = [
-    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
-    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
+    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones cortes x y y, vertice, rango
+    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=-0.125"]),
     ("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
     ("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
     ("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
 ]
-
+    
+    #elige una ecuacion aleatoria
+    
     ecuacion,soluciones,soluciones_vertice,rango_Dominio = random.choice(ecuaciones_cuadraticas)
     print(f"¡Rapido analiza la siguiente funcion: {ecuacion}")
     
@@ -172,6 +179,7 @@ def inversa():
     
 
 if __name__ == '__main__':
+    
     funciones = [
     "Funcion Lineal",
     "Funcion Cuadratica",
@@ -184,6 +192,6 @@ if __name__ == '__main__':
     "Funcion Inversa"
     ]
     operandos = ["+", "-"]
-    cuadratica()
-    # random_f()
+    # cuadratica()
+    random_f()
 
