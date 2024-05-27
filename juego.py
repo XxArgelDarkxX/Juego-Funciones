@@ -1,6 +1,7 @@
 import random 
 import math
 
+
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funcion_aleatoria = 'Funcion Lineal'
     if funcion_aleatoria == 'Funcion Lineal':
@@ -84,22 +85,15 @@ def lineal(m, b):
             print("Incorrecto")
 
 def cuadratica():
-    
-    # seleciona un problema aleatorio
-
     eleccion = random.randint(1, 3)
-    
-    # lista de ecuaciones cuadraticas con sus soluciones,cortes x y y, vertice y rango,dominio
     ecuaciones_cuadraticas = [
-    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones cortes x y y, vertice, rango
-    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=-0.125"]),
+    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
+    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
     ("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
     ("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
     ("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
 ]
-    
-    #elige una ecuacion aleatoria
-    
+
     ecuacion,soluciones,soluciones_vertice,rango_Dominio = random.choice(ecuaciones_cuadraticas)
     print(f"¡Rapido analiza la siguiente funcion: {ecuacion}")
     
@@ -133,7 +127,62 @@ def cubica():
     pass
 
 def f_raiz_cuadrada():
-    pass
+    global suma4
+    suma4 =random.randint(1,5)
+    functions = [
+    ("sqrt(x)", "R", "0", "0"),                                 # Función raíz cuadrada de x
+    ("sqrt(x^2 - 9)", "R", "-3, 3", "0"),                       # Función raíz cuadrada de x^2 - 9
+    ("sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"),                 # Función raíz cuadrada de 4x^2 + 16x + 16
+    ("sqrt(x-1)", "1,00", "1,0", "0"),            # Función raíz cúbica de x^3 - 8x^2 + 17x - 10
+    ("sqrt(4-x^2)", "-2,2","0,2")          # Función raíz cuártica de 9x^4 - 16x^2 + 4
+]
+    if suma4 == 1:
+        print("¡Rapido analiza la siguiente funcion: ", functions[0][0])
+        dominio=input("Dominio: ")
+        eje_x=input("Eje X: ")
+        eje_y=input("Eje Y: ")
+        if dominio == functions[0][1] and eje_x == functions[0][2] and eje_y == functions[0][3]:
+            print("¡Correcto!")
+        else:
+            print("¡Incorrecto!")
+            print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
+    elif suma4==2:
+        print("¡Rapido analiza la siguiente funcion: ", functions[1][0])
+        dominio=input("Dominio: ")
+        eje_x=input("Eje X 1: ")
+        eje_x2=input("Eje X 2: ")
+        eje_y=input("Eje Y 1: ")
+        if dominio == functions[1][1] and eje_x == functions[1][2] and eje_x2 == functions[1][3] and eje_y == functions[1][4]:
+            print("¡Correcto!")
+        else:
+            print("¡Incorrecto!")
+            print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
+    elif suma4==3:
+        print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
+        dominio=input("Dominio: ")
+        ejex=input("Eje X: ")
+        eje_y=input("Eje Y: ")
+        if dominio == functions[2][1] and ejex == functions[2][2] and eje_y == functions[2][3]:
+            print("¡Correcto!")
+        else:
+            print("¡Incorrecto!")
+    elif suma4==4:
+        print("¡Rapido analiza la siguiente funcion: ", functions[3][0])
+        dominio=input("Dominio: ")
+        eje_x=input("Eje X: ")
+        eje_y=input("Eje Y: ")
+        if dominio == functions[3][1] and eje_x == functions[3][2] and eje_y == functions[3][3]:
+            print("¡Correcto!")
+        else:
+            print("¡Incorrecto!")
+    elif suma4==5:
+        print("¡Rapido analiza la siguiente funcion: ", functions[4][0])
+        dominio=input("Dominio: ")
+        eje_x=input("Eje X: ")
+        eje_y=input("Eje Y: ")
+        if dominio == functions[4][1] and eje_x == functions[4][1] and eje_y == functions[4][2]:
+            print("¡Correcto!")
+
 
 def logaritmica():
     pass
@@ -235,7 +284,6 @@ def inversa():
     
 
 if __name__ == '__main__':
-    
     funciones = [
     "Funcion Lineal",
     "Funcion Cuadratica",
@@ -248,6 +296,6 @@ if __name__ == '__main__':
     "Funcion Inversa"
     ]
     operandos = ["+", "-"]
-    # cuadratica()
-    random_f()
+    cuadratica()
+    # random_f()
 
