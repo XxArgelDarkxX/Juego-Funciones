@@ -133,8 +133,8 @@ def f_raiz_cuadrada():
     ("sqrt(x)", "R", "0", "0"),                                 # Función raíz cuadrada de x
     ("sqrt(x^2 - 9)", "R", "-3, 3", "0"),                       # Función raíz cuadrada de x^2 - 9
     ("sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"),                 # Función raíz cuadrada de 4x^2 + 16x + 16
-    ("sqrt(x-1)", "1,00", "1,0", "0"),            # Función raíz cúbica de x^3 - 8x^2 + 17x - 10
-    ("sqrt(4-x^2)", "-2,2","0,2")          # Función raíz cuártica de 9x^4 - 16x^2 + 4
+    ("sqrt(x-1)", "1,00", "1,0", "0"),            # Función raíz cúbica de x-1
+    ("sqrt(4-x^2)", "-2,2","0,2")          # Función raíz cuadrativa de 4-x^2
 ]
     if suma4 == 1:
         print("¡Rapido analiza la siguiente funcion: ", functions[0][0])
