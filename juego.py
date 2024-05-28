@@ -10,15 +10,9 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
     elif funcion_aleatoria == 'Funcion Cuadratica':
         cuadratica()
     elif funcion_aleatoria == 'Funcion Cubica':
-        a = random.choice([i for i in range(0,20)])
-        b = random.choice([i for i in range(0,20)])
-        c = random.choice([i for i in range(0,20)])
-        d = random.choice([i for i in range(0,20)])
-        cubica(a,b,c,d)
+        cubica()
     elif funcion_aleatoria == 'Funcion Raiz Cuadrada':
         f_raiz_cuadrada()
-    elif funcion_aleatoria == 'Funcion Logaritmica':
-        logaritmica()
     elif funcion_aleatoria == 'Funcion Parte Entera':
         parte_entera()
     elif funcion_aleatoria == 'Funcion Valor Absoluto':
@@ -57,7 +51,7 @@ def lineal(m, b):
             if respuesta_x == corte_x and respuesta_y == corte_y:
                 print("Correcto")
             else:
-                print(f"Incorrecto, la respuesta correcta era {corte_x}")
+                print(f"Incorrecto, la respuesta correcta del corte x e y era {corte_x}, {corte_y}")
         else:
             corte_x = "0,0"
             corte_y = "0,0"
@@ -123,12 +117,40 @@ def cuadratica():
         else:
             print("Incorrecto")
 def cubica():
-    pass
+    preguntas = ["Cuáles son los cortes con los ejes x e y", "Cuál es el dominio y el rango de la función"]
+    ecuaciones_cubicas = [("2x³ - 3x² - 11x + 6", ["0,6", "(3,0)","(0.5,0)","(-2,0)"], ["R", "R"]),
+                          ("-x³ + 5x² - 2x + 7", ["0,7", "(3.03,0)","(-0.86,0)","(2.83,0)"], ["R", "R"]),
+                          ("3x³ + 2x² - x + 1", ["0,1", "(-1,0)","(-0.34,0)","(0.64,0)"], ["R", "R"]),
+                          ("2x³ - 3x² + 4x - 5", ["0,-5", "(1.33,0)","(-0.89,0)","(1.06,0)"], ["R", "R"]),
+                          ("-4x³ + x² + 3x - 8", ["0,-8", "(2.27,0)","(-1.08,0)","(0.88,0)"], ["R", "R"]),
+                          ("5x³ - 6x² + 7x + 2", ["0,2", "(-0.23,0)","(-1.21,0)","(0.79,0)"], ["R", "R"]),
+                          ("x³ - 4x² + 6x - 3", ["0,-3", "(1,0)","(1,0)","(3,0)"], ["R", "R"]),
+                          ("-2x³ + 3x² - 5x + 4", ["0,4", "(-1.22,0)","(1.28,0)","(0.93,0)"], ["R", "R"])]
+    pregunta = random.choice(preguntas)
+    funcion, cortes, dominio_rango = random.choice(ecuaciones_cubicas)
+    print(f"Rapido, analiza la funcion {funcion}")
+    if pregunta == preguntas[0]:
+        print(pregunta)
+        print(cortes)
+        corte_y = input("Cual es el corte en y (con este formato: 0,y): ")
+        corte_x1 = input("Cual es el corte en x1 (con este formato: (x,0)):")
+        corte_x2 = input("Cual es el corte en x2 (con este formato: (x,0)):")
+        corte_x3 = input("Cual es el corte en x3 (con este formato: (x,0)):")
+        cortes_sin_parentesis = [i.replace("(", "").replace(")", "") for i in cortes]
+        if [corte_y, corte_x1, corte_x2, corte_x3] == cortes_sin_parentesis:
+            print("Correcto")
+        else: 
+            print(f"Incorrecto, la respuesta era: corte y = {cortes[0]}, cortes x = {cortes_sin_parentesis[1:]}")
+    elif pregunta == preguntas[1]:
+        print(pregunta)
+        dominio = input("Cual es el dominio de la funcion: ")
+        rango = input("Cual es el rango de la funcion: ")  
+        if [dominio, rango] == dominio_rango:
+            print("Correcto")
+        else: 
+            print("Incorrecto")
 
 def f_raiz_cuadrada():
-    pass
-
-def logaritmica():
     pass
 
 def parte_entera():
@@ -233,13 +255,13 @@ if __name__ == '__main__':
     "Funcion Cuadratica",
     "Funcion Cubica",
     "Funcion Raiz Cuadrada",
-    "Funcion Logaritmica",
     "Funcion Parte Entera",
     "Funcion Valor Absoluto",
     "Funcion Compuesta",
     "Funcion Inversa"
     ]
     operandos = ["+", "-"]
-    cuadratica()
+    # cuadratica()
+    cubica()
     # random_f()
 
