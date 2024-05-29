@@ -1,9 +1,10 @@
 import random 
 import math
+import pygame
 
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funcion_aleatoria = 'Funcion Lineal'
+    funcion_aleatoria = 'Funcion Valor Absoluto'
     if funcion_aleatoria == 'Funcion Lineal':
         m = random.choice([i for i in range(0,20)])
         b = random.choice([i for i in range(0,20)])
@@ -18,8 +19,6 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
         parte_entera()
     elif funcion_aleatoria == 'Funcion Valor Absoluto':
         f_valor_absoluto()
-    elif funcion_aleatoria == 'Funcion Compuesta':
-        compuesta()
     elif funcion_aleatoria == 'Funcion Inversa':
         inversa()
 
@@ -215,14 +214,14 @@ def parte_entera():
     x = [f"¡Rapido realiza la funcion parte entera: ⌊{decimal}⌋ ", f"¡Rapido realiza la funcion parte entera: ⌈{decimal}⌉ "] #preguntas posibles
     preg_0 = random.choice(x) #elige una pregunta aleatoria
     if preg_0 == x[0]:
-        print(f"¡Rapido realiza la funcion parte entera: ⌊{decimal}⌋ ")
+        print(x[0])
         ans = int(input("Respuesta: "))
         if ans == math.floor(decimal):
             print("¡Correcto!")  
         else: 
             print("¡Incorrecto!")
     elif preg_0 == x[1]:
-        print(f"¡Rapido realiza la funcion parte entera: ⌈{decimal}⌉ ")
+        print(x[1])
         ans = int(input("Respuesta: "))
         if ans == math.ceil(decimal) or (decimal < 0 and ans == math.floor(decimal)): #si el numero es negativo se redondea hacia abajo
             print("¡Correcto!")
@@ -230,17 +229,19 @@ def parte_entera():
             print("¡Incorrecto!")
     
 def f_valor_absoluto():
-    x = random.randint(-50, 50)
-    print(f"¡Rapido realiza la funcion valor absoluto: |{x}| ")
-    ans = int(input("Respuesta: "))
-    if ans == abs(x):
+    a = random.randint(-50, 50)
+    b = random.randint(-50, 50)
+    if b < 0 < b or a > 1 or a <= -1:
+        print(f"¡Rapido realiza la funcion valor absoluto: |{a}x + ({b})| ")
+        ans_real = round((b*-1)/a, 2)
+        ans = input("Respuesta: ")
+    else:
+        random_f()
+    if ans == ans_real:
         print("¡Correcto!")
     else:
-        print("¡Incorrecto!")
+        print(f"¡Incorrecto!, la respuesta era: {ans_real}")
         
-def compuesta():
-    pass
-
 def inversa():
     a = "Cual es la funcion inversa de: F(x) = 2x + 1"
     b = "Cual es el punto de corte en X de: F(x) = 2x + 1"
@@ -313,11 +314,10 @@ if __name__ == '__main__':
     "Funcion Raiz Cuadrada",
     "Funcion Parte Entera",
     "Funcion Valor Absoluto",
-    "Funcion Compuesta",
     "Funcion Inversa"
     ]
     operandos = ["+", "-"]
     # cuadratica()
-    cubica()
-    # random_f()
+    # cubica()
+    random_f()
 
