@@ -2,22 +2,23 @@ import random
 import math
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funcion_aleatoria = 'Funcion Valor Absoluto'
+    funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
+    funcion_aleatoria = random.choice(funciones)
     if funcion_aleatoria == 'Funcion Lineal':
         m = random.choice([i for i in range(0,20)])
         b = random.choice([i for i in range(0,20)])
         lineal(m, b)
-    elif funcion_aleatoria == 'Funcion Cuadratica':
+    elif funcion_aleatoria == 'funcion cuadratica':
         cuadratica()
-    elif funcion_aleatoria == 'Funcion Cubica':
+    elif funcion_aleatoria == 'funcion cubica':
         cubica()
-    elif funcion_aleatoria == 'Funcion Raiz Cuadrada':
+    elif funcion_aleatoria == 'funcion raiz cuadrada':
         f_raiz_cuadrada()
-    elif funcion_aleatoria == 'Funcion Parte Entera':
+    elif funcion_aleatoria == 'funcion parte entera':
         parte_entera()
-    elif funcion_aleatoria == 'Funcion Valor Absoluto':
+    elif funcion_aleatoria == 'funcion valor absoluto':
         f_valor_absoluto()
-    elif funcion_aleatoria == 'Funcion Inversa':
+    elif funcion_aleatoria == 'funcion inversa':
         inversa()
 
 def lineal(m, b):
