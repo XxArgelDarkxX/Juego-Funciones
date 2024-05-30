@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import threading
 import cv2
 import time
+from tkinter import messagebox as mb
 # color del fondo dragon(todo) : #000014
 
 def juego():
@@ -40,8 +41,14 @@ def juego():
     frame_button_verificar.place(x = 500, y = 600)
     frame_button_verificar.configure(fg_color= "red")
     
+    def verificar(respuesta_usuario):
 
-    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20), command=lambda: funciones.verificar(respuesta.get()))
+        if respuesta_usuario == "":
+            mb.showerror("Error", "No has ingresado una respuesta")
+        else:
+            mb.showinfo("Respuesta", "Tu respuesta es: " + respuesta_usuario)
+    
+    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20), command=lambda:verificar(respuesta.get()))
 
     buton_verficar.grid(row=0, column=0)   
     cap = cv2.VideoCapture('dragon.mp4')
