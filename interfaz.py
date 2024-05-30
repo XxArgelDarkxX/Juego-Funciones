@@ -14,12 +14,17 @@ def juego():
     ventana.configure(fg_color="#000014")
 
 
-
-    label_pregunta = ctk.CTkLabel(ventana, text="¿Qué es un dragón?", font=("Arial", 20))
+    # Crear un frame para mostrar la pregunta
+    frame_pregunta = ctk.CTkFrame(ventana)
+    frame_pregunta.place(x = 600, y = 20)
+    label_pregunta = ctk.CTkLabel(frame_pregunta, text="¿Qué es un dragón?", font=("Arial", 20))
     label_pregunta.grid(row=0, column=0)
     
-    respuesta = ctk.CTkEntry(ventana, font=("Arial", 20))
-    respuesta.grid(row=1, column=0)     
+    # crear frame  entry respuesta
+    frame_respuesta = ctk.CTkFrame(ventana)
+    frame_respuesta.place(x = 50, y = 20)
+    respuesta = ctk.CTkEntry(frame_respuesta, font=("Arial", 20))
+    respuesta.grid(row=0, column=0)     
     
     frame_video = ctk.CTkFrame(ventana)
     frame_video.configure(fg_color= "red")
@@ -41,6 +46,11 @@ def juego():
     frame_button_verificar.place(x = 500, y = 600)
     frame_button_verificar.configure(fg_color= "red")
     
+    # frame label pregunata
+    frame_pregunta_actualiza = ctk.CTkFrame(ventana)
+    frame_pregunta_actualiza.place(x = 50, y = 250)
+    label_pregunta_actualiza = ctk.CTkLabel(frame_pregunta_actualiza, text="Pregunta actualizada", font=("Arial", 20))
+    label_pregunta_actualiza.grid(row=0, column=0)
     def verificar(respuesta_usuario):
 
         if respuesta_usuario == "":
