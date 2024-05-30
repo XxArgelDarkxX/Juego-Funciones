@@ -1,6 +1,9 @@
 import random 
 import math
 
+
+
+
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funcion_aleatoria = 'Funcion Lineal'
     if funcion_aleatoria == 'Funcion Lineal':
@@ -113,6 +116,7 @@ def cuadratica():
             print("Correcto")
         else:
             print("Incorrecto")
+            intento += 1
     elif eleccion == 2:
         print("Calcula el vertice de la parabola")
         vertice_x = int(input("Vertice x: "))
@@ -250,4 +254,3 @@ if __name__ == '__main__':
     operandos = ["+", "-"]
     # cuadratica()
     random_f()
-
