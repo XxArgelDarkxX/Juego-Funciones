@@ -2,19 +2,11 @@ import random
 import math
 import modificar_interfaz as mi
 
-def respuestas(respond):
-    return respond
 
-def preguntas(pregunta):
-    return pregunta
     
 
 
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
     funcion_aleatoria = "funcion raiz cuadrada"
@@ -195,7 +187,6 @@ def f_raiz_cuadrada():
         #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
         print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
-        respuestas(functions[2])
         dominio=input("Dominio: ")
         ejex=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -205,7 +196,6 @@ def f_raiz_cuadrada():
             print("¡Incorrecto!")
     elif suma4==4:
         print("¡Rapido analiza la siguiente funcion: ", functions[3][0])
-        respuestas(functions[3])
         dominio=input("Dominio: ")
         eje_x=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -215,7 +205,6 @@ def f_raiz_cuadrada():
             print("¡Incorrecto!")
     elif suma4==5:
         print("¡Rapido analiza la siguiente funcion: ", functions[4][0])
-        respuestas(functions[4])
         dominio=input("Dominio: ")
         eje_x=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -335,7 +324,3 @@ if __name__ == '__main__':
     # cuadratica()
     # cubica()
     random_f()
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes

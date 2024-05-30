@@ -1,10 +1,12 @@
 import customtkinter as ctk
-import funciones
+import funciones as f
 from PIL import Image, ImageTk
 import threading
 import cv2
 import time
 from tkinter import messagebox as mb
+import funciones as f
+import modificar_interfaz as mi
 # color del fondo dragon(todo) : #000014
 
 def juego():
@@ -58,12 +60,16 @@ def juego():
         else:
             mb.showinfo("Respuesta", "Tu respuesta es: " + respuesta_usuario)
     
-    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20), command=lambda:verificar(respuesta.get()))
+    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20))
 
     buton_verficar.grid(row=0, column=0)   
     cap = cv2.VideoCapture('dragon.mp4')
-    cap2 = cv2.VideoCapture('lapiz.mp4')
+    cap2 = cv2.VideoCapture('lapiz.mp4')    
     
+    #lista de preguntas desde la funcion de preguntas
+    preguntas,respuestas = f.f_raiz_cuadrada()
+    pregunta = preguntas[0]
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza)
     def play_video():
         while True:
             ret, frame = cap.read()
