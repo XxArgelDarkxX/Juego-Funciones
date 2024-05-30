@@ -1,24 +1,23 @@
 import random 
 import math
-import customtkinter as ctk
+global ecuaciones_cuadraticas
+ecuaciones_cuadraticas = [
+("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
+("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
+("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
+("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
+("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
+]
 
+def respuestas(respuesta):
+    return respuesta
 
-
-
-ventana = ctk.CTk()
-ventana.title("Funciones")
-ventana.geometry("1250x750")
-def a():
-    lista = ["Funcion Lineal", "Funcion Cuadratica", "Funcion Cubica", "Funcion Raiz Cuadrada", "Funcion Parte Entera", "Funcion Valor Absoluto", "Funcion Inversa"]
-    return random.choice(lista)
-ventana.config(bg="black")
-label = ctk.CTkLabel(ventana, text=a(), font=("Arial", 20))
-label.pack()
-ventana.mainloop()
+def preguntas(pregunta):
+    return pregunta
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
-    funcion_aleatoria = random.choice(funciones)
+    funcion_aleatoria = "funcion raiz cuadrada"
     if funcion_aleatoria == 'Funcion Lineal':
         m = random.choice([i for i in range(0,20)])
         b = random.choice([i for i in range(0,20)])
@@ -166,7 +165,7 @@ def cubica():
 
 def f_raiz_cuadrada():
     global suma4
-    suma4 =random.randint(1,5)
+    suma4 =1
     functions = [
     ("sqrt(x)", "R", "0", "0"),                                 # Función raíz cuadrada de x
     ("sqrt(x^2 - 9)", "R", "-3, 3", "0"),                       # Función raíz cuadrada de x^2 - 9
@@ -176,9 +175,16 @@ def f_raiz_cuadrada():
 ]
     if suma4 == 1:
         print("¡Rapido analiza la siguiente funcion: ", functions[0][0])
+        pregunta1= "Dominio: "
+        pregunta2= "Eje X: "
+        pregunta3= "Eje Y: "
+        respuestas(functions[0])
         dominio=input("Dominio: ")
+        preguntas(pregunta1)
         eje_x=input("Eje X: ")
+        preguntas(pregunta2)
         eje_y=input("Eje Y: ")
+        preguntas(pregunta3)
         if dominio == functions[0][1] and eje_x == functions[0][2] and eje_y == functions[0][3]:
             print("¡Correcto!")
         else:
@@ -186,6 +192,7 @@ def f_raiz_cuadrada():
             print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
     elif suma4==2:
         print("¡Rapido analiza la siguiente funcion: ", functions[1][0])
+        respuestas(functions[1])
         dominio=input("Dominio: ")
         eje_x=input("Eje X 1: ")
         eje_x2=input("Eje X 2: ")
@@ -197,6 +204,7 @@ def f_raiz_cuadrada():
             print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
         print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
+        respuestas(functions[2])
         dominio=input("Dominio: ")
         ejex=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -206,6 +214,7 @@ def f_raiz_cuadrada():
             print("¡Incorrecto!")
     elif suma4==4:
         print("¡Rapido analiza la siguiente funcion: ", functions[3][0])
+        respuestas(functions[3])
         dominio=input("Dominio: ")
         eje_x=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -215,6 +224,7 @@ def f_raiz_cuadrada():
             print("¡Incorrecto!")
     elif suma4==5:
         print("¡Rapido analiza la siguiente funcion: ", functions[4][0])
+        respuestas(functions[4])
         dominio=input("Dominio: ")
         eje_x=input("Eje X: ")
         eje_y=input("Eje Y: ")
@@ -334,5 +344,3 @@ if __name__ == '__main__':
     # cuadratica()
     # cubica()
     random_f()
-
-ventana.mainloop()
