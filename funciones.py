@@ -1,19 +1,20 @@
 import random 
 import math
-global ecuaciones_cuadraticas
-ecuaciones_cuadraticas = [
-("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
-("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
-("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
-("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
-("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
-]
+import customtkinter as ctk
 
-def respuestas(respuesta):
-    return respuesta
 
-def preguntas(pregunta):
-    return pregunta
+
+
+ventana = ctk.CTk()
+ventana.title("Funciones")
+ventana.geometry("1250x750")
+def a():
+    lista = ["Funcion Lineal", "Funcion Cuadratica", "Funcion Cubica", "Funcion Raiz Cuadrada", "Funcion Parte Entera", "Funcion Valor Absoluto", "Funcion Inversa"]
+    return random.choice(lista)
+ventana.config(bg="black")
+label = ctk.CTkLabel(ventana, text=a(), font=("Arial", 20))
+label.pack()
+ventana.mainloop()
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
@@ -344,3 +345,5 @@ if __name__ == '__main__':
     # cuadratica()
     # cubica()
     random_f()
+
+ventana.mainloop()
