@@ -5,10 +5,12 @@ import threading
 import cv2
 import time
 # color del fondo dragon(todo) : #000014
+
 def juego():
     ventana = ctk.CTk()
-    ventana.title("Reproductor de video")
+    ventana.title("Juego Funciones")
     ventana.geometry("1260x720")
+    ventana.configure(fg_color="#000014")
 
 
 
@@ -33,6 +35,15 @@ def juego():
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
     
+    
+    frame_button_verificar = ctk.CTkFrame(ventana)
+    frame_button_verificar.place(x = 500, y = 600)
+    frame_button_verificar.configure(fg_color= "red")
+    
+
+    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20), command=lambda: funciones.verificar(respuesta.get()))
+
+    buton_verficar.grid(row=0, column=0)   
     cap = cv2.VideoCapture('dragon.mp4')
     cap2 = cv2.VideoCapture('lapiz.mp4')
     
