@@ -4,18 +4,6 @@ import customtkinter as ctk
 
 
 
-
-ventana = ctk.CTk()
-ventana.title("Funciones")
-ventana.geometry("1250x750")
-def a():
-    lista = ["Funcion Lineal", "Funcion Cuadratica", "Funcion Cubica", "Funcion Raiz Cuadrada", "Funcion Parte Entera", "Funcion Valor Absoluto", "Funcion Inversa"]
-    return random.choice(lista)
-ventana.config(bg="black")
-label = ctk.CTkLabel(ventana, text=a(), font=("Arial", 20))
-label.pack()
-ventana.mainloop()
-
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
     funcion_aleatoria = "funcion raiz cuadrada"
@@ -346,4 +334,3 @@ if __name__ == '__main__':
     # cubica()
     random_f()
 
-ventana.mainloop()
