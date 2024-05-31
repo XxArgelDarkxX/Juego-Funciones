@@ -19,7 +19,8 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
     elif funcion_aleatoria == 'funcion cubica':
         cubica()
     elif funcion_aleatoria == 'funcion raiz cuadrada':
-        f_raiz_cuadrada()
+        preguntas,respuestas,pregunta=f_raiz_cuadrada()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion parte entera':
         parte_entera()
     elif funcion_aleatoria == 'funcion valor absoluto':
@@ -157,7 +158,7 @@ def cubica():
 
 def f_raiz_cuadrada():
     global suma4
-    suma4 =1
+    suma4 =random.randint(1,2)
     functions = [
     ["sqrt(x)", "R", "0", "0"],                              # Función raíz cuadrada de x
     ["sqrt(x^2 - 9)", "R", "-3, 3", "0"],                       # Función raíz cuadrada de x^2 - 9

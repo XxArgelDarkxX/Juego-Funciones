@@ -22,7 +22,7 @@ def juego():
     label_pregunta = ctk.CTkLabel(frame_pregunta, text="¿Qué es un dragón?", font=("Arial", 20))
     label_pregunta.grid(row=0, column=0)
     
-    # crear frame  entry respuesta
+    # crear frame  entWry respuesta
     frame_respuesta = ctk.CTkFrame(ventana)
     frame_respuesta.place(x = 50, y = 20)
     respuesta = ctk.CTkEntry(frame_respuesta, font=("Arial", 20))
@@ -67,9 +67,11 @@ def juego():
     cap2 = cv2.VideoCapture('lapiz.mp4')    
     
     #lista de preguntas desde la funcion de preguntas
-    preguntas,respuestas = f.f_raiz_cuadrada()
-    pregunta = preguntas[0]
-    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza)
+    preguntas,respuestas,pregunta= f.random_f()
+    if mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza)==True:
+        print("monkey")
+    else:
+        print("no monkey")
     def play_video():
         while True:
             ret, frame = cap.read()
