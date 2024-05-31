@@ -181,18 +181,18 @@ def f_raiz_cuadrada():
         pregunta2= "Eje X: "
         pregunta3= "Eje Y: "
         #print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
-        lista_preguntas=[pregunta,pregunta1,pregunta2,pregunta3]
+        lista_preguntas=[pregunta1,pregunta2,pregunta3]
         lista_respuestas=[functions[0][1],functions[0][2],functions[0][3]]
-        return lista_preguntas,lista_respuestas
+        return lista_preguntas,lista_respuestas,pregunta
     elif suma4==2:
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[1][0]} "
         pregunta1= "Dominio: "
         pregunta2= "Eje X 1: "
         pregunta3= "Eje X 2: "
         pregunta4= "Eje Y: "
-        lista_preguntas=[pregunta,pregunta1,pregunta2,pregunta3,pregunta4]
+        lista_preguntas=[pregunta1,pregunta2,pregunta3,pregunta4]
         lista_respuestas=[functions[1][1],functions[1][2],functions[1][2],functions[1][3]]
-        return lista_preguntas,lista_respuestas
+        return lista_preguntas,lista_respuestas,pregunta
         #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
         print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
