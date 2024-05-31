@@ -28,7 +28,8 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
     elif funcion_aleatoria == 'funcion cubica':
         cubica()
     elif funcion_aleatoria == 'funcion raiz cuadrada':
-        f_raiz_cuadrada()
+        preguntas,respuestas,pregunta=f_raiz_cuadrada()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion parte entera':
         parte_entera()
     elif funcion_aleatoria == 'funcion valor absoluto':
@@ -166,35 +167,33 @@ def cubica():
 
 def f_raiz_cuadrada():
     global suma4
-    suma4 =random.randint(1,5)
+    suma4 =random.randint(1,2)
     functions = [
-    ("sqrt(x)", "R", "0", "0"),                                 # Función raíz cuadrada de x
-    ("sqrt(x^2 - 9)", "R", "-3, 3", "0"),                       # Función raíz cuadrada de x^2 - 9
-    ("sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"),                 # Función raíz cuadrada de 4x^2 + 16x + 16
-    ("sqrt(x-1)", "1,00", "1,0", "0"),            # Función raíz cúbica de x-1
-    ("sqrt(4-x^2)", "-2,2","0,2")          # Función raíz cuadrativa de 4-x^2
+    ["sqrt(x)", "R", "0", "0"],                              # Función raíz cuadrada de x
+    ["sqrt(x^2 - 9)", "R", "-3, 3", "0"],                       # Función raíz cuadrada de x^2 - 9
+    ["sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"] ,               # Función raíz cuadrada de 4x^2 + 16x + 16
+    ["sqrt(x-1)", "1,00", "1,0", "0"],            # Función raíz cúbica de x-1
+    ["sqrt(4-x^2)", "-2,2","0,2"]         # Función raíz cuadrativa de 4-x^2
 ]
     if suma4 == 1:
-        print("¡Rapido analiza la siguiente funcion: ", functions[0][0])
-        dominio=input("Dominio: ")
-        eje_x=input("Eje X: ")
-        eje_y=input("Eje Y: ")
-        if dominio == functions[0][1] and eje_x == functions[0][2] and eje_y == functions[0][3]:
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
-            print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
+        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[0][0]} "
+        pregunta1= "Dominio: "
+        pregunta2= "Eje X: "
+        pregunta3= "Eje Y: "
+        #print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
+        lista_preguntas=[pregunta,pregunta1,pregunta2,pregunta3]
+        lista_respuestas=[functions[0][1],functions[0][2],functions[0][3]]
+        return lista_preguntas,lista_respuestas
     elif suma4==2:
-        print("¡Rapido analiza la siguiente funcion: ", functions[1][0])
-        dominio=input("Dominio: ")
-        eje_x=input("Eje X 1: ")
-        eje_x2=input("Eje X 2: ")
-        eje_y=input("Eje Y 1: ")
-        if dominio == functions[1][1] and eje_x == functions[1][2] and eje_x2 == functions[1][3] and eje_y == functions[1][4]:
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
-            print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
+        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[1][0]} "
+        pregunta1= "Dominio: "
+        pregunta2= "Eje X 1: "
+        pregunta3= "Eje X 2: "
+        pregunta4= "Eje Y: "
+        lista_preguntas=[pregunta,pregunta1,pregunta2,pregunta3,pregunta4]
+        lista_respuestas=[functions[1][1],functions[1][2],functions[1][2],functions[1][3]]
+        return lista_preguntas,lista_respuestas
+        #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
         print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
         dominio=input("Dominio: ")
