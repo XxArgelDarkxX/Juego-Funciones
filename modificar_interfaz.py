@@ -102,4 +102,8 @@ def modificar_interfaz(ask,see,respond,label_ask,button,respond_entry,label_see,
         ask,see,respond=f.random_f() # <--- Aquí se obtienen nuevas preguntas
     label_ask.configure(text=see)  # <--- Aquí se actualiza la función
     label_see.configure(text=ask[i]) # <--- Aquí se actualiza la pregunta
+    button.focus_set() # <--- Aquí se le da el foco al botón
+    respond_entry.focus_set() # <--- Aquí se le da el foco al entry
+    respond_entry.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al entry
+    button.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al botón
     button.configure(command=lambda: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al botón
