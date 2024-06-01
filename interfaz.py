@@ -25,13 +25,18 @@ def juego():
     imagen_corazon = Image.open("corazon.png")
     corazones = []
     for i in range(10):
-        imagen_corazon = imagen_corazon.resize((75, 75))
+        imagen_corazon = imagen_corazon.resize((60, 60))
         foto = ImageTk.PhotoImage(imagen_corazon)
         label_corazon = ctk.CTkLabel(frame_corazon,text= "", image=foto)
         label_corazon.grid(row=0, column=i)
         corazones.append(label_corazon)
         
-    
+    # frame aciertos
+    frame_aciertos = ctk.CTkFrame(ventana)
+    frame_aciertos.place(x = 800, y = 500)
+    frame_aciertos.configure(fg_color= "#000014")
+    label_aciertos = ctk.CTkLabel(frame_aciertos, text="Aciertos: 0", font=("Arial", 20))
+    label_aciertos.grid(row=0, column=0)
     # Crear un frame para mostrar ecuacion
     frame_pregunta = ctk.CTkFrame(ventana)
     frame_pregunta.place(x = 300,y = 20)
@@ -47,7 +52,7 @@ def juego():
     
     frame_video = ctk.CTkFrame(ventana)
     frame_video.configure(fg_color= "red")
-    frame_video.place(x =1150, y = 350)  # Cambia estos valores para mover el video
+    frame_video.place(x =1000, y = 200)  # Cambia estos valores para mover el video
 
     # Crear un label para mostrar el video
     video_label = ctk.CTkLabel(frame_video, text="", font=("Arial", 20))
@@ -62,7 +67,7 @@ def juego():
     
     #frame para boton verificar
     frame_button_verificar = ctk.CTkFrame(ventana)
-    frame_button_verificar.place(x = 500, y = 600)
+    frame_button_verificar.place(x = 600, y = 710)
     frame_button_verificar.configure(fg_color= "purple")
     frame_button_verificar.configure(width=1000, height=500)
     
@@ -75,7 +80,7 @@ def juego():
     label_pregunta_actualiza.grid(row=0, column=0)
 
     # boton verificar
-    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Algerian", 50),width = 250,height=100)
+    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Algerian", 50),width = 250,height=50)
 
     buton_verficar.grid(row=0, column=0)   
     cap = cv2.VideoCapture('dragon.mp4')
@@ -94,7 +99,7 @@ def juego():
                 continue
 
             # Redimensionar el frame
-            frame = cv2.resize(frame, (500, 500))  # Cambia estos valores para cambiar el tamaño del video
+            frame = cv2.resize(frame, (700, 700))  # Cambia estos valores para cambiar el tamaño del video
 
             # Convertir el frame a una imagen de PIL y luego a una imagen de Tkinter
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
