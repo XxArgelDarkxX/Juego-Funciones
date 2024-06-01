@@ -35,7 +35,7 @@ def puntuacion(ventana): # <--- Aquí se crea la función que muestra la puntuac
 
 def fuego(fuego,label): # <-- animacion de fallos
     x=1000
-    y=459
+    y=359
     j=0
     while x > 100:
         label.configure(image=fuego[j])
@@ -124,5 +124,4 @@ def modificar_interfaz(ask,see,respond,label_ask,button,respond_entry,label_see,
     button.focus_set() # <--- Aquí se le da el foco al botón
     respond_entry.focus_set() # <--- Aquí se le da el foco al entry
     respond_entry.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif,fire,label_fire)) # <--- Aquí se le asigna la función verificar al entry
-    button.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif,fire,label_fire)) # <--- Aquí se le asigna la función verificar al botón
     button.configure(command=lambda: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif,fire,label_fire)) # <--- Aquí se le asigna la función verificar al botón
