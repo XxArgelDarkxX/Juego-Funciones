@@ -13,19 +13,19 @@ import modificar_interfaz as mi
 def juego():
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
-    ventana.geometry("1260x720")
+    ventana.geometry("1550x900")
     ventana.configure(fg_color="#000014")
     ventana.resizable(False, False)
 
     
     # frame imagen corazon
     frame_corazon = ctk.CTkFrame(ventana)
-    frame_corazon.place(x = 50, y = 20)
+    frame_corazon.place(x = 50, y = 750)
     frame_corazon.configure(fg_color= "#000014")
     imagen_corazon = Image.open("corazon.png")
     corazones = []
-    for i in range(3):
-        imagen_corazon = imagen_corazon.resize((100, 100))
+    for i in range(10):
+        imagen_corazon = imagen_corazon.resize((75, 75))
         foto = ImageTk.PhotoImage(imagen_corazon)
         label_corazon = ctk.CTkLabel(frame_corazon,text= "", image=foto)
         label_corazon.grid(row=0, column=i)
@@ -47,7 +47,7 @@ def juego():
     
     frame_video = ctk.CTkFrame(ventana)
     frame_video.configure(fg_color= "red")
-    frame_video.place(x =850, y = 250)  # Cambia estos valores para mover el video
+    frame_video.place(x =1150, y = 350)  # Cambia estos valores para mover el video
 
     # Crear un label para mostrar el video
     video_label = ctk.CTkLabel(frame_video, text="", font=("Arial", 20))

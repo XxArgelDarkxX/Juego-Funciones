@@ -236,8 +236,7 @@ if __name__ == '__main__':
     "Funcion Valor Absoluto",
     "Funcion Inversa"
     ]
-    operandos = ["+", "-"]
-    # cuadratica()
-    inversa()
-    # random_f()
+    
+    
+    
     
