@@ -152,30 +152,29 @@ def f_raiz_cuadrada():
         return lista_preguntas,lista_respuestas,pregunta
         #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
-        print("¡Rapido analiza la siguiente funcion: ", functions[2][0])
-        dominio=input("Dominio: ")
-        ejex=input("Eje X: ")
-        eje_y=input("Eje Y: ")
-        if dominio == functions[2][1] and ejex == functions[2][2] and eje_y == functions[2][3]:
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
+        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[2][0]} "
+        dominio="Dominio: "
+        ejex="Eje X: "
+        eje_y="Eje Y: "
+        lista_preguntas=[dominio,ejex,eje_y]
+        lista_respuestas=[functions[2][1],functions[2][2],functions[2][3]]
+        return lista_preguntas,lista_respuestas,pregunta
     elif suma4==4:
-        print("¡Rapido analiza la siguiente funcion: ", functions[3][0])
-        dominio=input("Dominio: ")
-        eje_x=input("Eje X: ")
-        eje_y=input("Eje Y: ")
-        if dominio == functions[3][1] and eje_x == functions[3][2] and eje_y == functions[3][3]:
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
+        pregunta= f"¡Rapido analiza la siguiente funcion: {functions[3][0]} " 
+        dominio="Dominio: "
+        eje_x="Eje X: "
+        eje_y="Eje Y: "
+        lista_preguntas=[dominio,eje_x,eje_y]
+        lista_respuestas=[functions[3][1],functions[3][2],functions[3][3]]
+        return lista_preguntas,lista_respuestas,pregunta
     elif suma4==5:
-        print("¡Rapido analiza la siguiente funcion: ", functions[4][0])
-        dominio=input("Dominio: ")
-        eje_x=input("Eje X: ")
-        eje_y=input("Eje Y: ")
-        if dominio == functions[4][1] and eje_x == functions[4][1] and eje_y == functions[4][2]:
-            print("¡Correcto!")
+        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[4][0]} "
+        dominio="Dominio: "
+        eje_x="Eje X: "
+        eje_y="Eje Y: "
+        lista_preguntas=[dominio,eje_x,eje_y]
+        lista_respuestas=[functions[4][1],functions[4][2],functions[4][3]]
+        return lista_preguntas,lista_respuestas,pregunta
 
 
 def parte_entera():
