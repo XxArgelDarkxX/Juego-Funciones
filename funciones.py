@@ -7,7 +7,7 @@ import modificar_interfaz as mi
 
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funciones = ["funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
+    funciones = ["funcion inversa","funcion valor absoluto","funcion parte entera","funcion raiz cuadrada","funcion cubica","funcion cuadratica","funcion lineal"]
     
 
     funcion_aleatoria = random.choice(funciones)
@@ -39,7 +39,7 @@ def lineal():
     ejercicios_funciones_lineales = [
     ["f(x) = 3x + 2", ["-2/3"],["2"],["creciente"]],
     ["g(x) = -2x - 5", ["-5/2"], ["-5"],["decreciente"]],
-    ["h(x) = 4x - 1", ["1/4"], ["-1"],["creciente"]],
+    ["h(x) = 4x - 1", ["0"], ["-1"],["creciente"]],
     ["j(x) = -x + 3", ["3"], ["3"],["decreciente"]],
     ["k(x) = 2x", ["0"], ["0"],["creciente"]]
     ]
@@ -55,14 +55,14 @@ def lineal():
 def cuadratica():
     eleccion = 1
     ecuaciones_cuadraticas = [
-    ["x**2 - 4*x + 4 ", ["2", "2", "0"],["2,0"],["R","y>=0"]], #soluciones, vertice, rango
-    ["2*x**2 - 3*x + 1 ", ["0.5, 1, 1"],["0.75, -0.125"],["R","y>=0"]],
-    ["3*x**2 + 6*x + 3 ", ["-1, -1, 3"],["-1, 0"],["R","y>=0"]],
-    ["x**2 + 5*x + 6 ", ["-3, -2, 6"],["-2.5,-0.25"],["R","y>=-0.25"]],
-    ["4*x**2 - 4*x + 1 ", ["0.5, 0.5, 1"],["0.5, 0"],["R","y>=0"]],
-]
+    ["x**2 - 4*x + 4 ", ["2", "2", "4"],["(2,0)"],["R","y>=0"]], #soluciones, vertice, rango
+    ["2*x**2 - 3*x + 1 ", ["1/4"," 1", "1"],["(3/4, -1/8)"],["R","y>=-1/8"]],
+    ["3*x**2 + 6*x + 3 ", ["-1", "-1", "3"],["(-1, 0)"],["R","y>=0"]],
+    ["x**2 + 5*x + 6 ", ["-3", "-2", "6"],["(-5/2,-1/4)"],["R","y>=-1/4"]],
+    ["4*x**2 - 4*x + 1 ", ["1/2", "1/2", "1"],["(1/2,0)"],["R","y>=0"]]
+    ]
 
-    ecuacion,soluciones,soluciones_vertice,rango_Dominio = random.choice(ecuaciones_cuadraticas)
+    ecuacion, soluciones, soluciones_vertice, rango_Dominio = random.choice(ecuaciones_cuadraticas)
     pregunta = f"¡Rapido analiza la siguiente funcion: {ecuacion}"
     
     if eleccion == 1:
@@ -75,8 +75,8 @@ def cuadratica():
         rango = "¿Cual es el Rango?"
         
         lista_preguntas=[corte_x1,corte_x2,corte_y,vertice,dominio,rango]
-        lista_repuestas = [ecuaciones_cuadraticas[0][1][0],ecuaciones_cuadraticas[0][1][1],ecuaciones_cuadraticas[0][1][2],ecuaciones_cuadraticas[0][2][0],ecuaciones_cuadraticas[0][3][0],ecuaciones_cuadraticas[0][3][1]]
-        return lista_preguntas,lista_repuestas,pregunta
+        lista_repuestas = [soluciones[0], soluciones[1], soluciones[2], soluciones_vertice[0], rango_Dominio[0], rango_Dominio[1]]
+        return lista_preguntas, lista_repuestas, pregunta
     elif eleccion == 2:
         print("Calcula el vertice de la parabola")
         vertice_x = int(input("Vertice x: "))
@@ -123,67 +123,69 @@ def cubica():
 
 def f_raiz_cuadrada():
     global suma4
-    suma4 =random.randint(1,2)
+    suma4 = random.randint(1, 5)
     functions = [
-    ["sqrt(x)", "R", "0", "0"],                              # Función raíz cuadrada de x
-    ["sqrt(x^2 - 9)", "R", "-3","3", "0"],                       # Función raíz cuadrada de x^2 - 9
-    ["sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"] ,               # Función raíz cuadrada de 4x^2 + 16x + 16
-    ["sqrt(x-1)", "1,00", "1,0", "0"],            # Función raíz cúbica de x-1
-    ["sqrt(4-x^2)", "-2,2","0,2"]         # Función raíz cuadrativa de 4-x^2
-]
+        ["sqrt(x)", "x|x>=0", "0", "0"],                              # Función raíz cuadrada de x
+        ["sqrt(x^2 - 9)", "x|x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
+        ["sqrt(4x^2 + 16x + 16)", "x|x>=-2", "-2", "0", "4sqrt(2)"],  # Función raíz cuadrada de 4x^2 + 16x + 16
+        ["sqrt(x-1)", "x|x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
+        ["sqrt(4-x^2)", "x|x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
+    ]
     
     if suma4 == 1:
-        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[0][0]} "
-        pregunta1= "¿Cual es el dominio?"
-        pregunta2= "¿Cual es el corte con el eje X?"
-        pregunta3= "¿Cual es el corte con el eje Y?"
-        #print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
-        lista_preguntas=[pregunta1,pregunta2,pregunta3]
-        lista_respuestas=[functions[0][1],functions[0][2],functions[0][3]]
-        return lista_preguntas,lista_respuestas,pregunta
-    elif suma4==2:
-        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[1][0]} "
-        pregunta1= "¿Cual es el dominio?"
-        pregunta2= "¿Cual es el corte con el eje X1: "
-        pregunta3= "¿Cual es el corte con el eje X2: "
-        pregunta4= "¿Cual es el corte con el eje Y?"
-        lista_preguntas=[pregunta1,pregunta2,pregunta3,pregunta4]
-        lista_respuestas=[functions[1][1],functions[1][2],functions[1][2],functions[1][3]]
-        return lista_preguntas,lista_respuestas,pregunta
-        #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
-    elif suma4==3:
-        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[2][0]} "
-        dominio="¿Cual es el Dominio?"
-        ejex="¿Cual es el corte con el eje X?"
-        eje_y="¿Cual es el corte con el eje Y?"
-        lista_preguntas=[dominio,ejex,eje_y]
-        lista_respuestas=[functions[2][1],functions[2][2],functions[2][3]]
-        return lista_preguntas,lista_respuestas,pregunta
-    elif suma4==4:
-        pregunta= f"¡Rapido analiza la siguiente funcion: {functions[3][0]} " 
-        dominio="¿Cual es el dominio?"
-        eje_x="¿Cual es el corte del eje X: "
-        eje_y="¿Cual es el corte del eje Y:"
-        lista_preguntas=[dominio,eje_x,eje_y]
-        lista_respuestas=[functions[3][1],functions[3][2],functions[3][3]]
-        return lista_preguntas,lista_respuestas,pregunta
-    elif suma4==5:
-        pregunta=f"¡Rapido analiza la siguiente funcion: {functions[4][0]} "
-        dominio="¿Cual es el dominio?"
-        eje_x= "¿Cual es el corte del Eje X?"
-        eje_y= "¿Cual es el corte del Eje Y?"
-        lista_preguntas=[dominio,eje_x,eje_y]
-        lista_respuestas=[functions[4][1],functions[4][2],functions[4][3]]
-        return lista_preguntas,lista_respuestas,pregunta
+        pregunta = f"¡Rápido analiza la siguiente función: {functions[0][0]}!"
+        pregunta1 = "¿Cuál es el dominio?"
+        pregunta2 = "¿Cuál es el corte con el eje X?"
+        pregunta3 = "¿Cuál es el corte con el eje Y?"
+        lista_preguntas = [pregunta1, pregunta2, pregunta3]
+        lista_respuestas = [functions[0][1], functions[0][2], functions[0][3]]
+        return lista_preguntas, lista_respuestas, pregunta
+    
+    elif suma4 == 2:
+        pregunta = f"¡Rápido analiza la siguiente función: {functions[1][0]}!"
+        pregunta1 = "¿Cuál es el dominio?"
+        pregunta2 = "¿Cuál es el corte con el eje X1?"
+        pregunta3 = "¿Cuál es el corte con el eje X2?"
+        pregunta4 = "¿Cuál es el corte con el eje Y?"
+        lista_preguntas = [pregunta1, pregunta2, pregunta3, pregunta4]
+        lista_respuestas = [functions[1][1], functions[1][2], functions[1][3], functions[1][4]]
+        return lista_preguntas, lista_respuestas, pregunta
+    
+    elif suma4 == 3:
+        pregunta = f"¡Rápido analiza la siguiente función: {functions[2][0]}!"
+        dominio = "¿Cuál es el Dominio?"
+        ejex = "¿Cuál es el corte con el eje X?"
+        ejey = "¿Cuál es el corte con el eje Y?"
+        lista_preguntas = [dominio, ejex, ejey]
+        lista_respuestas = [functions[2][1], functions[2][2], functions[2][3]]
+        return lista_preguntas, lista_respuestas, pregunta
+    
+    elif suma4 == 4:
+        pregunta = f"¡Rápido analiza la siguiente función: {functions[3][0]}!"
+        dominio = "¿Cuál es el dominio?"
+        ejex = "¿Cuál es el corte con el eje X?"
+        ejey = "¿Cuál es el corte con el eje Y?"
+        lista_preguntas = [dominio, ejex, ejey]
+        lista_respuestas = [functions[3][1], functions[3][2], functions[3][3]]
+        return lista_preguntas, lista_respuestas, pregunta
+    
+    elif suma4 == 5:
+        pregunta = f"¡Rápido analiza la siguiente función: {functions[4][0]}!"
+        dominio = "¿Cuál es el dominio?"
+        ejex = "¿Cuál es el corte con el eje X?"
+        ejey = "¿Cuál es el corte con el eje Y?"
+        lista_preguntas = [dominio, ejex, ejey]
+        lista_respuestas = [functions[4][1], functions[4][2], functions[4][4]]
+        return lista_preguntas, lista_respuestas, pregunta
 
 
 def parte_entera():
-    lista_pregunta = ["¿Cual es el resultado de la funcion?"]
+    lista_pregunta = ["¿Cual es el resultado de la funcion(piso)?"]
     ejercicios_parte_entera = [
     ["F(x) = ⌊3.7⌋", ["3"]],
     ["G(x) = ⌈sqrt 46⌉", ["6"]],
     ["H(x) = ⌊2.5⌋", ["2"]],
-    ["J(x) = ⌈sqrt 61⌉", ["8"]],
+    ["J(x) = ⌈sqrt 61⌉", ["9"]],
     ["K(x) = ⌊-pi⌋", ["-4"]]
     ]
     funcion,parte_entera = random.choice(ejercicios_parte_entera)  
@@ -210,11 +212,11 @@ def f_valor_absoluto():
 def inversa():
     lista_pregunta = ["¡Encuentra las la funcion inversa!"]
     funciones_inversas = [
-        ["F(x) = 2x + 1",[ " (x - 1) / 2"]],
-        ["G(x) = 3x - 2",[ "G^-1(x) = (x + 2) / 3"]],
-        ["H(x) = (x + 4) / 5", ["H^-1(x) = 5x - 4"]],
-        ["J(x) = (2x - 3) / 4", ["J^-1(x) = (4x + 3) / 2"]],
-        ["K(x) = (x - 7) / 3", ["K^-1(x) = 3x + 7"]]]
+        ["F(x) = 2x + 1",[ "f^-1(x) = (x - 1) / 2"]],
+        ["G(x) = 3x - 2",[ "g^-1(x) = (x + 2) / 3"]],
+        ["H(x) = (x + 4) / 5", ["h^-1(x) = 5x - 4"]],
+        ["J(x) = (2x - 3) / 4", ["j^-1(x) = 2x+3/2"]],
+        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]]]
     
     funcion,inversa = random.choice(funciones_inversas)
     preguntas = f"Rapido analiza la siguente funcion: {funcion}"
