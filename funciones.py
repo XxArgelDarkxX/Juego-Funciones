@@ -67,12 +67,12 @@ def cuadratica():
     
     if eleccion == 1:
         
-        corte_x1 = "Corte con x1:"
-        corte_x2 ="Corte con x2:"
-        corte_y = "Corte con y:"
-        vertice = "Vertice:"
-        dominio = "Dominio:"
-        rango = "Rango:"
+        corte_x1 = "¿Encuentra el corte con el eje x1?"
+        corte_x2 ="¿Encuentra el corte con el eje x2?"
+        corte_y = "¿Cual es el corte con el y?"
+        vertice = "¿En que coordenadas se encuentra Vertice?"
+        dominio = "¿Cual es el Dominio?"
+        rango = "¿Cual es el Rango?"
         
         lista_preguntas=[corte_x1,corte_x2,corte_y,vertice,dominio,rango]
         lista_repuestas = [ecuaciones_cuadraticas[0][1][0],ecuaciones_cuadraticas[0][1][1],ecuaciones_cuadraticas[0][1][2],ecuaciones_cuadraticas[0][2][0],ecuaciones_cuadraticas[0][3][0],ecuaciones_cuadraticas[0][3][1]]
@@ -115,8 +115,8 @@ def cubica():
         lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
         return lista_preguntas,lista_respuestas,mensaje
     elif pregunta == preguntas[1]:
-            dominio = "Cual es el dominio de la funcion: "
-            rango = "Cual es el rango de la funcion: "
+            dominio = "Cual es el dominio de la funcion?"
+            rango = "Cual es el rango de la funcion?"
             lista_preguntas = [dominio,rango]
             lista_respuestas = dominio_rango
             return lista_preguntas,lista_respuestas,mensaje
@@ -155,30 +155,30 @@ def f_raiz_cuadrada():
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[2][0]} "
         dominio="¿Cual es el Dominio?"
         ejex="¿Cual es el corte con el eje X?"
-        eje_y="¿Cual es el Eje Y?"
+        eje_y="¿Cual es el corte con el eje Y?"
         lista_preguntas=[dominio,ejex,eje_y]
         lista_respuestas=[functions[2][1],functions[2][2],functions[2][3]]
         return lista_preguntas,lista_respuestas,pregunta
     elif suma4==4:
         pregunta= f"¡Rapido analiza la siguiente funcion: {functions[3][0]} " 
         dominio="¿Cual es el dominio?"
-        eje_x="¿Cual es el corte delEje X: "
-        eje_y="Eje Y: "
+        eje_x="¿Cual es el corte del eje X: "
+        eje_y="¿Cual es el corte del eje Y:"
         lista_preguntas=[dominio,eje_x,eje_y]
         lista_respuestas=[functions[3][1],functions[3][2],functions[3][3]]
         return lista_preguntas,lista_respuestas,pregunta
     elif suma4==5:
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[4][0]} "
-        dominio="Dominio: "
-        eje_x="Eje X: "
-        eje_y="Eje Y: "
+        dominio="¿Cual es el dominio?"
+        eje_x= "¿Cual es el corte del Eje X?"
+        eje_y= "¿Cual es el corte del Eje Y?"
         lista_preguntas=[dominio,eje_x,eje_y]
         lista_respuestas=[functions[4][1],functions[4][2],functions[4][3]]
         return lista_preguntas,lista_respuestas,pregunta
 
 
 def parte_entera():
-    lista_pregunta = ["Cual es el resultado :"]
+    lista_pregunta = ["¿Cual es el resultado de la funcion?"]
     ejercicios_parte_entera = [
     ["F(x) = ⌊3.7⌋", ["3"]],
     ["G(x) = ⌈sqrt 46⌉", ["6"]],
@@ -193,7 +193,7 @@ def parte_entera():
     
 
 def f_valor_absoluto():
-    lista_pregunta = ["Encuentra los puntos donde la funcion se anula "]  
+    lista_pregunta = ["¡Encuentra los puntos donde la funcion se anula!"]  
     funciones_absolutas = [
         ["f(x)= |3X**2-75|",["+-5"]],
         ["g(x)= |2x**2-32|",["+-4"]],
@@ -208,7 +208,7 @@ def f_valor_absoluto():
     return lista_pregunta,lista_repuesta,preguntas
         
 def inversa():
-    lista_pregunta = ["Encuentra las la funcion inversa"]
+    lista_pregunta = ["¡Encuentra las la funcion inversa!"]
     funciones_inversas = [
         ["F(x) = 2x + 1",[ " (x - 1) / 2"]],
         ["G(x) = 3x - 2",[ "G^-1(x) = (x + 2) / 3"]],
