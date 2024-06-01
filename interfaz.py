@@ -14,8 +14,7 @@ BACKGROUND_COLOR = "#000014"
 def juego():
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
-    ventana.geometry()
-    ventana.attributes("-fullscreen", True)
+    ventana.geometry("1550x900")
     ventana.configure(fg_color=BACKGROUND_COLOR)
     ventana.resizable(False, False)
 
@@ -132,9 +131,7 @@ def return_to_menu(ventana):
 def info(window):
     window.destroy()
     ventana = ctk.CTk()
-    ventana.title("Información")
     ventana.geometry("1550x900")
-    ventana.attributes("-fullscreen", True)
     ventana.configure(fg_color=BACKGROUND_COLOR)
     ventana.resizable(False, False)
     label_info = ctk.CTkLabel(ventana, text="", font=("Arial", 30))
@@ -168,9 +165,8 @@ def info(window):
 def menu():
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
-    ventana.geometry()
     ventana.configure(fg_color=BACKGROUND_COLOR)
-    ventana.attributes("-fullscreen", True)
+    ventana.geometry("1550x900")
     ventana.resizable(False, False)
 
     # Dragon image frame
