@@ -22,6 +22,9 @@ def juego():
     frame_corazon.place(x = 50, y = 765)
     frame_corazon.configure(fg_color= "#000014")
     imagen_corazon = Image.open("corazon.png")
+    cora_roto = Image.open("corazon_muerte.png")
+    cora_roto = cora_roto.resize((75, 75))
+    foto1=ImageTk.PhotoImage(cora_roto)
     corazones = []
     for i in range(10):
         imagen_corazon = imagen_corazon.resize((60, 60))
@@ -87,7 +90,7 @@ def juego():
     
     #lista de preguntas desde la funcion de preguntas
     preguntas,respuestas,pregunta= f.random_f()
-    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana)
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana,foto1,label_aciertos)
 
         
     def play_video():
@@ -140,8 +143,83 @@ def juego():
     
     ventana.mainloop()
 
+
+def return_to_menu(ventana):
+    ventana.destroy()
+    menu()
+
+def info(window):
+    window.destroy()
+    ventana = ctk.CTk()
+    ventana.title("Información")
+    ventana.geometry("1550x900")
+    ventana.configure(fg_color="#000014")
+    ventana.resizable(False, False)
+    label_info = ctk.CTkLabel(ventana, text="", font=("Arial", 30))
+    label_info.place(x = 50, y = 50)
+    button_regresar = ctk.CTkButton(ventana, text="Regresar", font=("Arial", 20), width=10, height=2, command=lambda: return_to_menu(ventana))  # Botón para regresar al menú
+    button_regresar.place(x = 50, y = 800)
+
+    message = """
+    Instructivo de las Reglas del Juego: La Batalla contra el Dragón\n
+    ¡Bienvenido a la emocionante Batalla contra el Dragón! Antes de embarcarte en esta aventura épica,
+    es crucial que comprendas las reglas del juego para que puedas luchar valientemente y triunfar
+    . Aquí te las presentamos de manera clara y sencilla:
+
+    Objetivo del Juego:
+    Derrotar al Dragón obteniendo 10 aciertos.
+    Reglas del Juego:
+    Aciertos y Fallas:
+
+    Cada acción que realices en el juego puede resultar en un acierto o una falla.
+    Necesitas acumular 10 aciertos para derrotar al Dragón y ganar el juego.
+    Si acumulas 10 fallas, tu personaje morirá y el juego terminará. """
+
+    def update_text(i=0):
+        if i < len(message):
+            label_info.configure(text=label_info.cget("text") + message[i])
+            ventana.after(25, update_text, i + 1)  # Agrega una letra cada 100 milisegundos
+
+    update_text()  # Comienza la animación
+
+    ventana.mainloop()
+
+def menu():
+    ventana = ctk.CTk()
+    ventana.title("Juego Funciones")
+    ventana.geometry("1550x900")
+    ventana.configure(fg_color="#000014")
+    ventana.resizable(False, False)
     
+    frame_menu = ctk.CTkFrame(ventana)
+    frame_menu.place(x = 300, y = 200)
+    frame_menu.configure(fg_color="#000014")
+    
+    label_menu = ctk.CTkLabel(frame_menu, text="Juego de Funciones", font=("Arial", 30))
+    label_menu.grid(row=0, column=0)
+    
+    button_jugar = ctk.CTkButton(frame_menu, text="Jugar", font=("Arial", 20), width=10, height=2)
+    button_jugar.grid(row=1, column=0)
+    
+    button_info = ctk.CTkButton(frame_menu, text="Información", font=("Arial", 20), width=10, height=2, command=lambda: info(ventana))
+    button_info.grid(row=2, column=0)
+    
+    button_salir = ctk.CTkButton(frame_menu, text="Salir", font=("Arial", 20), width=10, height=2)
+    button_salir.grid(row=3, column=0)
+    
+    def jugar():
+        ventana.destroy()
+        juego()
+    
+    button_jugar.configure(command=jugar)
+    
+    def salir():
+        ventana.destroy()
+    
+    button_salir.configure(command=salir)
+    
+    ventana.mainloop()
 
 if __name__ == "__main__":
-    juego()
+    menu()
 
