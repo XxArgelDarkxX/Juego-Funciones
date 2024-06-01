@@ -83,7 +83,7 @@ def juego():
     
     #lista de preguntas desde la funcion de preguntas
     preguntas,respuestas,pregunta= f.random_f()
-    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana,juego)
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana)
 
         
     def play_video():
