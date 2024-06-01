@@ -126,7 +126,7 @@ def f_raiz_cuadrada():
     suma4 =random.randint(1,2)
     functions = [
     ["sqrt(x)", "R", "0", "0"],                              # Función raíz cuadrada de x
-    ["sqrt(x^2 - 9)", "R", "-3, 3", "0"],                       # Función raíz cuadrada de x^2 - 9
+    ["sqrt(x^2 - 9)", "R", "-3","3", "0"],                       # Función raíz cuadrada de x^2 - 9
     ["sqrt(4x^2 + 16x + 16)", "R", "-2", "0","4"] ,               # Función raíz cuadrada de 4x^2 + 16x + 16
     ["sqrt(x-1)", "1,00", "1,0", "0"],            # Función raíz cúbica de x-1
     ["sqrt(4-x^2)", "-2,2","0,2"]         # Función raíz cuadrativa de 4-x^2
@@ -134,35 +134,35 @@ def f_raiz_cuadrada():
     
     if suma4 == 1:
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[0][0]} "
-        pregunta1= "Dominio: "
-        pregunta2= "Eje X: "
-        pregunta3= "Eje Y: "
+        pregunta1= "¿Cual es el dominio?"
+        pregunta2= "¿Cual es el corte con el eje X?"
+        pregunta3= "¿Cual es el corte con el eje Y?"
         #print("El dominio de la función raíz cuadrada de x es R, el eje X es 0 y el eje Y es 0")
         lista_preguntas=[pregunta1,pregunta2,pregunta3]
         lista_respuestas=[functions[0][1],functions[0][2],functions[0][3]]
         return lista_preguntas,lista_respuestas,pregunta
     elif suma4==2:
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[1][0]} "
-        pregunta1= "Dominio: "
-        pregunta2= "Eje X 1: "
-        pregunta3= "Eje X 2: "
-        pregunta4= "Eje Y: "
+        pregunta1= "¿Cual es el dominio?"
+        pregunta2= "¿Cual es el corte con el eje X1: "
+        pregunta3= "¿Cual es el corte con el eje X2: "
+        pregunta4= "¿Cual es el corte con el eje Y?"
         lista_preguntas=[pregunta1,pregunta2,pregunta3,pregunta4]
         lista_respuestas=[functions[1][1],functions[1][2],functions[1][2],functions[1][3]]
         return lista_preguntas,lista_respuestas,pregunta
         #print("El dominio de la función raíz cuadrada de x^2 - 9 es R, el eje X es -3 y 3 y el eje Y es 0 ")
     elif suma4==3:
         pregunta=f"¡Rapido analiza la siguiente funcion: {functions[2][0]} "
-        dominio="Dominio: "
-        ejex="Eje X: "
-        eje_y="Eje Y: "
+        dominio="¿Cual es el Dominio?"
+        ejex="¿Cual es el corte con el eje X?"
+        eje_y="¿Cual es el Eje Y?"
         lista_preguntas=[dominio,ejex,eje_y]
         lista_respuestas=[functions[2][1],functions[2][2],functions[2][3]]
         return lista_preguntas,lista_respuestas,pregunta
     elif suma4==4:
         pregunta= f"¡Rapido analiza la siguiente funcion: {functions[3][0]} " 
-        dominio="Dominio: "
-        eje_x="Eje X: "
+        dominio="¿Cual es el dominio?"
+        eje_x="¿Cual es el corte delEje X: "
         eje_y="Eje Y: "
         lista_preguntas=[dominio,eje_x,eje_y]
         lista_respuestas=[functions[3][1],functions[3][2],functions[3][3]]

@@ -17,10 +17,9 @@ def juego():
     ventana.configure(fg_color="#000014")
     ventana.resizable(False, False)
 
-    
     # frame imagen corazon
     frame_corazon = ctk.CTkFrame(ventana)
-    frame_corazon.place(x = 50, y = 750)
+    frame_corazon.place(x = 50, y = 765)
     frame_corazon.configure(fg_color= "#000014")
     imagen_corazon = Image.open("corazon.png")
     corazones = []
@@ -33,9 +32,9 @@ def juego():
         
     # frame aciertos
     frame_aciertos = ctk.CTkFrame(ventana)
-    frame_aciertos.place(x = 800, y = 500)
+    frame_aciertos.place(x = 1000, y = 770)
     frame_aciertos.configure(fg_color= "#000014")
-    label_aciertos = ctk.CTkLabel(frame_aciertos, text="Aciertos: 0", font=("Arial", 20))
+    label_aciertos = ctk.CTkLabel(frame_aciertos, text="Aciertos: 0", font=("Algerian", 35))
     label_aciertos.grid(row=0, column=0)
     # Crear un frame para mostrar ecuacion
     frame_pregunta = ctk.CTkFrame(ventana)
@@ -44,9 +43,9 @@ def juego():
     label_pregunta = ctk.CTkLabel(frame_pregunta, text="¿Qué es un dragón?", font=("Algerian", 30))
     label_pregunta.grid(row=0, column=0)
     
-    # crear frame  entWry respuesta
+    # crear frame  entry respuesta
     frame_respuesta = ctk.CTkFrame(ventana)
-    frame_respuesta.place(x = 550, y = 500)
+    frame_respuesta.place(x = 655, y = 700)
     respuesta = ctk.CTkEntry(frame_respuesta, font=("Arial", 20))
     respuesta.grid(row=0, column=0)     
     
@@ -60,20 +59,20 @@ def juego():
     
     frame_video2 = ctk.CTkFrame(ventana)
     frame_video2.configure(fg_color= "red")
-    frame_video2.place(x =50, y = 459)  # Cambia estos valores para mover el video
+    frame_video2.place(x =-70, y = 459)  # Cambia estos valores para mover el video
     
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
     
     #frame para boton verificar
     frame_button_verificar = ctk.CTkFrame(ventana)
-    frame_button_verificar.place(x = 600, y = 710)
+    frame_button_verificar.place(x = 600, y = 750)
     frame_button_verificar.configure(fg_color= "purple")
     frame_button_verificar.configure(width=1000, height=500)
     
     # frame para mostrar pregunta actualizada
     frame_pregunta_actualiza = ctk.CTkFrame(ventana)
-    frame_pregunta_actualiza.place(x = 50, y = 250)
+    frame_pregunta_actualiza.place(x = 400, y = 150)
     frame_pregunta_actualiza.configure(fg_color= "#000014")
 
     label_pregunta_actualiza = ctk.CTkLabel(frame_pregunta_actualiza, text="Pregunta actualizada", font=("Algerian", 25))
