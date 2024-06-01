@@ -22,7 +22,9 @@ def juego():
     gif_frames = [Image.open("kamehameha.gif").convert('RGBA') for i in range(50)]
     gif = [ctk.CTkImage(light_image=frame, dark_image=frame, size=(frame.width, frame.height)) for frame in gif_frames]
     label_gif = ctk.CTkLabel(ventana)
-
+    fuego_frames = [Image.open("fire_ball.gif").convert('RGBA') for i in range(50)]
+    fuego = [ctk.CTkImage(light_image=frame, dark_image=frame, size=(frame.width, frame.height)) for frame in fuego_frames]
+    label_fuego = ctk.CTkLabel(ventana)
     # Frame for hearts
     frame_corazon = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_corazon.place(x=50, y=765)
@@ -86,7 +88,7 @@ def juego():
 
     # Load questions and answers
     preguntas, respuestas, pregunta = f.random_f()
-    mi.modificar_interfaz(preguntas, pregunta, respuestas, label_pregunta, buton_verficar, respuesta, label_pregunta_actualiza, corazones, ventana, cora_roto, label_aciertos, gif, label_gif)
+    mi.modificar_interfaz(preguntas, pregunta, respuestas, label_pregunta, buton_verficar, respuesta, label_pregunta_actualiza, corazones, ventana, cora_roto, label_aciertos, gif, label_gif,fuego,label_fuego)
 
     def play_video():
         while True:
