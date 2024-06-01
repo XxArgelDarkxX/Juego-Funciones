@@ -23,6 +23,9 @@ def juego():
     frame_corazon.place(x = 50, y = 750)
     frame_corazon.configure(fg_color= "#000014")
     imagen_corazon = Image.open("corazon.png")
+    cora_roto = Image.open("corazon_muerte.png")
+    cora_roto = cora_roto.resize((75, 75))
+    foto1=ImageTk.PhotoImage(cora_roto)
     corazones = []
     for i in range(10):
         imagen_corazon = imagen_corazon.resize((60, 60))
@@ -88,7 +91,7 @@ def juego():
     
     #lista de preguntas desde la funcion de preguntas
     preguntas,respuestas,pregunta= f.random_f()
-    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana)
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana,foto1)
 
         
     def play_video():
