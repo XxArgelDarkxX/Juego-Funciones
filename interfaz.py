@@ -7,6 +7,7 @@ import time
 from tkinter import messagebox as mb
 import funciones as f
 import modificar_interfaz as mi
+
 # color del fondo dragon(todo) : #000014
 
 def juego():
@@ -17,6 +18,18 @@ def juego():
     ventana.resizable(False, False)
 
     
+    # frame imagen corazon
+    frame_corazon = ctk.CTkFrame(ventana)
+    frame_corazon.place(x = 50, y = 20)
+    frame_corazon.configure(fg_color= "#000014")
+    imagen_corazon = Image.open("corazon.png")
+    corazones = []
+    for i in range(3):
+        imagen_corazon = imagen_corazon.resize((100, 100))
+        foto = ImageTk.PhotoImage(imagen_corazon)
+        label_corazon = ctk.CTkLabel(frame_corazon,text= "", image=foto)
+        label_corazon.grid(row=0, column=i)
+        corazones.append(label_corazon)
         
     
     # Crear un frame para mostrar ecuacion
@@ -60,14 +73,7 @@ def juego():
 
     label_pregunta_actualiza = ctk.CTkLabel(frame_pregunta_actualiza, text="Pregunta actualizada", font=("Algerian", 25))
     label_pregunta_actualiza.grid(row=0, column=0)
-    
-    def verificar(respuesta_usuario):
 
-        if respuesta_usuario == "":
-            mb.showerror("Error", "No has ingresado una respuesta")
-        else:
-            mb.showinfo("Respuesta", "Tu respuesta es: " + respuesta_usuario)
-    
     # boton verificar
     buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Algerian", 50),width = 250,height=100)
 
@@ -77,10 +83,8 @@ def juego():
     
     #lista de preguntas desde la funcion de preguntas
     preguntas,respuestas,pregunta= f.random_f()
-    if mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza)==True:
-        print("monkey")
-    else:
-        print("no monkey")
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones)
+
         
     def play_video():
         while True:
@@ -136,4 +140,4 @@ def juego():
 
 if __name__ == "__main__":
     juego()
-     
+

@@ -37,7 +37,7 @@ def verificar(respond,respond_entry,label_see,ask,label_ask,button):
         label_see.update_idletasks()  #  <-- actualiza la interfaz
         return False 
 
-def modificar_interfaz(ask=None,see=None,respond=None,label_ask=None,button=None,respond_entry=None,label_see=None): # <--- Aquí se crea la función que modifica la interfaz
+def modificar_interfaz(ask=None,see=None,respond=None,label_ask=None,button=None,respond_entry=None,label_see=None,corazones=None): # <--- Aquí se crea la función que modifica la interfaz
     global i  # <--- Aquí se declara la variable global i
     if i==len(ask): # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla 
         i=0 # <--- Aquí se reinicia el contador de preguntas
