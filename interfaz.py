@@ -37,7 +37,7 @@ def juego():
         
     # frame aciertos
     frame_aciertos = ctk.CTkFrame(ventana)
-    frame_aciertos.place(x = 1000, y = 770)
+    frame_aciertos.place(x = 1000, y = 900)
     frame_aciertos.configure(fg_color= "#000014")
     label_aciertos = ctk.CTkLabel(frame_aciertos, text="Aciertos: 0", font=("Algerian", 35))
     label_aciertos.grid(row=0, column=0)
@@ -271,4 +271,3 @@ def menu():
 
 if __name__ == "__main__":
     menu()
-
