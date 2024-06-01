@@ -6,12 +6,15 @@ import time as t
 global i
 i=0
 
+
 # verifica que la respuesta este bien y que la lista no haya acabado
 def verificar(respond,respond_entry,label_see,ask,label_ask,button):
     global i
     if respond==respond_entry.get(): # <--- Aquí se compara la respuesta del usuario con la respuesta correcta
         respond_entry.delete(0, ctk.END)
-        mb.showinfo("Correcto","Respuesta correcta") # <--- Aquí se muestra un mensaje de que la respuesta es correcta
+        mb.showinfo("Correcto","Respuesta correcta") # <--- Aquí se muestra un mensaje de que la respuesta es correcta 
+        
+        
         i+=1
         if i==len(ask) : # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
             i=0 # <--- Aquí se reinicia el contador de preguntas
@@ -24,6 +27,7 @@ def verificar(respond,respond_entry,label_see,ask,label_ask,button):
     else:
         respond_entry.delete(0, ctk.END) # <--- Aquí se borra el contenido del entry
         mb.showinfo("Incorrecto","Respuesta incorrecta") # <--- Aquí se muestra un mensaje de que la respuesta es incorrecta
+        
         i+=1 # <--- Aquí se aumenta el contador de preguntas
         if i==len(ask) : # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
             i=0 # <--- Aquí se reinicia el contador de preguntas

@@ -14,17 +14,21 @@ def juego():
     ventana.title("Juego Funciones")
     ventana.geometry("1260x720")
     ventana.configure(fg_color="#000014")
+    ventana.resizable(False, False)
 
-
-    # Crear un frame para mostrar la pregunta
+    
+        
+    
+    # Crear un frame para mostrar ecuacion
     frame_pregunta = ctk.CTkFrame(ventana)
-    frame_pregunta.place(x = 600, y = 20)
-    label_pregunta = ctk.CTkLabel(frame_pregunta, text="¿Qué es un dragón?", font=("Arial", 20))
+    frame_pregunta.place(x = 300,y = 20)
+    frame_pregunta.configure(fg_color= "#000014")
+    label_pregunta = ctk.CTkLabel(frame_pregunta, text="¿Qué es un dragón?", font=("Algerian", 30))
     label_pregunta.grid(row=0, column=0)
     
     # crear frame  entWry respuesta
     frame_respuesta = ctk.CTkFrame(ventana)
-    frame_respuesta.place(x = 50, y = 20)
+    frame_respuesta.place(x = 550, y = 500)
     respuesta = ctk.CTkEntry(frame_respuesta, font=("Arial", 20))
     respuesta.grid(row=0, column=0)     
     
@@ -43,16 +47,20 @@ def juego():
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
     
-    
+    #frame para boton verificar
     frame_button_verificar = ctk.CTkFrame(ventana)
     frame_button_verificar.place(x = 500, y = 600)
-    frame_button_verificar.configure(fg_color= "red")
+    frame_button_verificar.configure(fg_color= "purple")
+    frame_button_verificar.configure(width=1000, height=500)
     
-    # frame label pregunata
+    # frame para mostrar pregunta actualizada
     frame_pregunta_actualiza = ctk.CTkFrame(ventana)
     frame_pregunta_actualiza.place(x = 50, y = 250)
-    label_pregunta_actualiza = ctk.CTkLabel(frame_pregunta_actualiza, text="Pregunta actualizada", font=("Arial", 20))
+    frame_pregunta_actualiza.configure(fg_color= "#000014")
+
+    label_pregunta_actualiza = ctk.CTkLabel(frame_pregunta_actualiza, text="Pregunta actualizada", font=("Algerian", 25))
     label_pregunta_actualiza.grid(row=0, column=0)
+    
     def verificar(respuesta_usuario):
 
         if respuesta_usuario == "":
@@ -60,7 +68,8 @@ def juego():
         else:
             mb.showinfo("Respuesta", "Tu respuesta es: " + respuesta_usuario)
     
-    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Arial", 20))
+    # boton verificar
+    buton_verficar = ctk.CTkButton(frame_button_verificar, text="Verificar", font=("Algerian", 50),width = 250,height=100)
 
     buton_verficar.grid(row=0, column=0)   
     cap = cv2.VideoCapture('dragon.mp4')
@@ -72,6 +81,7 @@ def juego():
         print("monkey")
     else:
         print("no monkey")
+        
     def play_video():
         while True:
             ret, frame = cap.read()
@@ -100,7 +110,7 @@ def juego():
                 continue
 
             # Redimensionar el frame
-            frame = cv2.resize(frame, (320, 240))  # Cambia estos valores para cambiar el tamaño del video
+            frame = cv2.resize(frame, (400, 300))  # Cambia estos valores para cambiar el tamaño del video
 
             # Convertir el frame a una imagen de PIL y luego a una imagen de Tkinter
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -119,10 +129,11 @@ def juego():
     thread2 = threading.Thread(target=play_video2)
     thread2.start()
     thread.start()
+    
     ventana.mainloop()
 
     
 
 if __name__ == "__main__":
     juego()
-    
+     

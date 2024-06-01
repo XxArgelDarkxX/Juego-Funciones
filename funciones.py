@@ -3,109 +3,80 @@ import math
 import modificar_interfaz as mi
 
 
-    
 
 
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funciones = ["  funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
-    funcion_aleatoria = "funcion raiz cuadrada"
-    if funcion_aleatoria == 'Funcion Lineal':
-        m = random.choice([i for i in range(0,20)])
-        b = random.choice([i for i in range(0,20)])
-        lineal(m, b)
+    funciones = ["funcion lineal", "funcion cuadratica", "funcion cubica", "funcion raiz cuadrada", "funcion parte entera", "funcion valor absoluto", "funcion inversa"]
+    
+
+    funcion_aleatoria = random.choice(funciones)
+    if funcion_aleatoria == 'funcion lineal':
+        preguntas,respuestas,pregunta = lineal()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion cuadratica':
-        cuadratica()
+        preguntas,respuestas,pregunta = cuadratica()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion cubica':
-        cubica()
+        preguntas,respuestas,pregunta = cubica()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion raiz cuadrada':
         preguntas,respuestas,pregunta=f_raiz_cuadrada()
         return preguntas,respuestas,pregunta
+    
     elif funcion_aleatoria == 'funcion parte entera':
-        parte_entera()
+        preguntas,respuestas,pregunta = parte_entera()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion valor absoluto':
-        f_valor_absoluto()
+        preguntas,respuestas,pregunta = f_valor_absoluto()
+        return preguntas,respuestas,pregunta
     elif funcion_aleatoria == 'funcion inversa':
-        inversa()
+        preguntas,respuestas,pregunta = inversa()
+        return preguntas,respuestas,pregunta
 
-def lineal(m, b):
-    operador = random.choice(operandos)
-    preguntas = ["Cual es el dominio y el rango", "Cuales son los cortes con x y con y", "Es creciente, decreciente o constante"]
-    pregunta = random.choice(preguntas)
-    print(f"¡Rapido analiza la siguiente funcion {m}x {operador} {b}")
-    if pregunta == preguntas[0]:
-        dominio = "todos los reales"
-        rango = "todos los reales"
-        print(pregunta)
-        respuesta_dominio = input("Su respuesta al dominio: ")
-        respuesta_rango = input("Su respuesta al rango: ")
-        if respuesta_dominio.lower() == dominio and respuesta_rango.lower() == rango:
-            print("Correcto")
-        else:
-            print("Incorrecto")
-    elif pregunta == preguntas[1]:
-        if b != 0 or m == 0:
-            corte_y = f"0,{b}"
-            x = -b / m if m != 0 else None  
-            if x is not None:
-                corte_x = f"{round(x, 2)},0"
-            else:
-                corte_x = ""
-            print(pregunta)
-            respuesta_x = input("Su respuesta del corte con x(el formato para escribir es x,0 y si no tiene cortes con x, simplemente das enter sin hacer nada mas): ")
-            respuesta_y = input("Su respuesta del corte con y(el formato para escribir es 0,y): ")
-            if respuesta_x == corte_x and respuesta_y == corte_y:
-                print("Correcto")
-            else:
-                print(f"Incorrecto, la respuesta correcta del corte x e y era {corte_x}, {corte_y}")
-        else:
-            corte_x = "0,0"
-            corte_y = "0,0"
-            print(pregunta)
-            respuesta_x = input("Su respuesta del corte con x(el formato para escribir es x,0 y si no tiene cortes con x, simplemente das enter sin hacer nada mas): " )
-            respuesta_y = input("Su respuesta del corte con y(el formato para escribir es 0,y): ")
-            if respuesta_x == corte_x and respuesta_y == corte_y:
-                print("Correcto")
-            else:
-                print("Incorrecto")
-
-    elif pregunta == preguntas[2]:
-        if m > 0:
-            respuesta = "creciente"
-        elif m < 0:
-            respuesta = "decreciente"
-        else:
-            respuesta = "constante"
-        print(pregunta)
-        tu_respuesta = input("Su respuesta: ")
-        if tu_respuesta == respuesta:
-            print("Correcto")
-        else:
-            print("Incorrecto")
-
+def lineal():
+    
+    ejercicios_funciones_lineales = [
+    ["f(x) = 3x + 2", ["-2/3"],["2"],["creciente"]],
+    ["g(x) = -2x - 5", ["-5/2"], ["-5"],["decreciente"]],
+    ["h(x) = 4x - 1", ["1/4"], ["-1"],["creciente"]],
+    ["j(x) = -x + 3", ["3"], ["3"],["decreciente"]],
+    ["k(x) = 2x", ["0"], ["0"],["creciente"]]
+    ]
+    ecuacion,cortex,cortey,creciente_decreciente = random.choice(ejercicios_funciones_lineales)
+    
+    corte_x = "Corte con x:"
+    corte_y = "Corte con y:"
+    crec_decrec = "Creciente o decreciente:"
+    lista_preguntas=[corte_x,corte_y,crec_decrec]
+    lista_respuestas=[cortex[0],cortey[0],creciente_decreciente[0]]
+    return lista_preguntas,lista_respuestas,ecuacion
+    
 def cuadratica():
-    eleccion = random.randint(1, 3)
+    eleccion = 1
     ecuaciones_cuadraticas = [
-    ("x**2 - 4*x + 4 ", [2, 2, 0],[2,0],["R","y>=0"]), #soluciones, vertice, rango
-    ("2*x**2 - 3*x + 1 ", [0.5, 1, 1],[0.75, -0.125],["R","y>=0"]),
-    ("3*x**2 + 6*x + 3 ", [-1, -1, 3],[-1, 0],["R","y>=0"]),
-    ("x**2 + 5*x + 6 ", [-3, -2, 6],[-2.5,-0.25],["R","y>=-0.25"]),
-    ("4*x**2 - 4*x + 1 ", [0.5, 0.5, 1],[0.5, 0],["R","y>=0"]),
+    ["x**2 - 4*x + 4 ", ["2", "2", "0"],["2,0"],["R","y>=0"]], #soluciones, vertice, rango
+    ["2*x**2 - 3*x + 1 ", ["0.5, 1, 1"],["0.75, -0.125"],["R","y>=0"]],
+    ["3*x**2 + 6*x + 3 ", ["-1, -1, 3"],["-1, 0"],["R","y>=0"]],
+    ["x**2 + 5*x + 6 ", ["-3, -2, 6"],["-2.5,-0.25"],["R","y>=-0.25"]],
+    ["4*x**2 - 4*x + 1 ", ["0.5, 0.5, 1"],["0.5, 0"],["R","y>=0"]],
 ]
 
     ecuacion,soluciones,soluciones_vertice,rango_Dominio = random.choice(ecuaciones_cuadraticas)
-    print(f"¡Rapido analiza la siguiente funcion: {ecuacion}")
+    pregunta = f"¡Rapido analiza la siguiente funcion: {ecuacion}"
     
     if eleccion == 1:
         
-        print("calcula los cortes con x y y")
-        corte_x1 = int(input("Corte con x1: "))
-        corte_x2 = int(input("Corte con x2: "))
-        corte_y = int(input("Corte con y: "))
-        if [corte_x1, corte_x2, corte_y] == soluciones:
-            print("Correcto")
-        else:
-            print("Incorrecto")
+        corte_x1 = "Corte con x1:"
+        corte_x2 ="Corte con x2:"
+        corte_y = "Corte con y:"
+        vertice = "Vertice:"
+        dominio = "Dominio:"
+        rango = "Rango:"
+        
+        lista_preguntas=[corte_x1,corte_x2,corte_y,vertice,dominio,rango]
+        lista_repuestas = [ecuaciones_cuadraticas[0][1][0],ecuaciones_cuadraticas[0][1][1],ecuaciones_cuadraticas[0][1][2],ecuaciones_cuadraticas[0][2][0],ecuaciones_cuadraticas[0][3][0],ecuaciones_cuadraticas[0][3][1]]
+        return lista_preguntas,lista_repuestas,pregunta
     elif eleccion == 2:
         print("Calcula el vertice de la parabola")
         vertice_x = int(input("Vertice x: "))
@@ -124,37 +95,31 @@ def cuadratica():
             print("Incorrecto")
 def cubica():
     preguntas = ["Cuáles son los cortes con los ejes x e y", "Cuál es el dominio y el rango de la función"]
-    ecuaciones_cubicas = [("2x³ - 3x² - 11x + 6", ["0,6", "(3,0)","(0.5,0)","(-2,0)"], ["R", "R"]),
-                          ("-x³ + 5x² - 2x + 7", ["0,7", "(3.03,0)","(-0.86,0)","(2.83,0)"], ["R", "R"]),
-                          ("3x³ + 2x² - x + 1", ["0,1", "(-1,0)","(-0.34,0)","(0.64,0)"], ["R", "R"]),
-                          ("2x³ - 3x² + 4x - 5", ["0,-5", "(1.33,0)","(-0.89,0)","(1.06,0)"], ["R", "R"]),
-                          ("-4x³ + x² + 3x - 8", ["0,-8", "(2.27,0)","(-1.08,0)","(0.88,0)"], ["R", "R"]),
-                          ("5x³ - 6x² + 7x + 2", ["0,2", "(-0.23,0)","(-1.21,0)","(0.79,0)"], ["R", "R"]),
-                          ("x³ - 4x² + 6x - 3", ["0,-3", "(1,0)","(1,0)","(3,0)"], ["R", "R"]),
-                          ("-2x³ + 3x² - 5x + 4", ["0,4", "(-1.22,0)","(1.28,0)","(0.93,0)"], ["R", "R"])]
+    ecuaciones_cubicas = [  ["2x³ - 3x² - 11x + 6", ["0,6", "(3,0)","(0.5,0)","(-2,0)"], ["R","R"]],
+                          ["-x³ + 5x² - 2x + 7", ["0,7", "(3.03,0)","(-0.86,0)","(2.83,0)"], ["R","R"]],
+                          ["3x³ + 2x² - x + 1", ["0,1", "(-1,0)","(-0.34,0)","(0.64,0)"], ["R","R"]],
+                          ["2x³ - 3x² + 4x - 5", ["0,-5", "(1.33,0)","(-0.89,0)","(1.06,0)"], ["R","R"]],
+                          ["-4x³ + x² + 3x - 8", ["0,-8", "(2.27,0)","(-1.08,0)","(0.88,0)"], ["R","R"]],
+                          ["5x³ - 6x² + 7x + 2", ["0,2", "(-0.23,0)","(-1.21,0)","(0.79,0)"], ["R","R"]],
+                          ["x³ - 4x² + 6x - 3",  ["0,-3", "(1,0)","(1,0)","(3,0)"], ["R", "R"]],
+                          ["-2x³ + 3x² - 5x + 4", ["0,4", "(-1.22,0)","(1.28,0)","(0.93,0)"], ["R","R"]]]
     pregunta = random.choice(preguntas)
     funcion, cortes, dominio_rango = random.choice(ecuaciones_cubicas)
-    print(f"Rapido, analiza la funcion {funcion}")
+    mensaje = f"Rapido, analiza la funcion {funcion}"
     if pregunta == preguntas[0]:
-        print(pregunta)
-        print(cortes)
-        corte_y = input("Cual es el corte en y (con este formato: 0,y): ")
-        corte_x1 = input("Cual es el corte en x1 (con este formato: (x,0)):")
-        corte_x2 = input("Cual es el corte en x2 (con este formato: (x,0)):")
-        corte_x3 = input("Cual es el corte en x3 (con este formato: (x,0)):")
-        cortes_sin_parentesis = [i.replace("(", "").replace(")", "") for i in cortes]
-        if [corte_y, corte_x1, corte_x2, corte_x3] == cortes_sin_parentesis:
-            print("Correcto")
-        else: 
-            print(f"Incorrecto, la respuesta era: corte y = {cortes[0]}, cortes x = {cortes_sin_parentesis[1:]}")
+        corte_y = "Cual es el corte en y (con este formato: 0,y): "
+        corte_x1 = "Cual es el corte en x1 (con este formato: (x,0)):"
+        corte_x2 = "Cual es el corte en x2 (con este formato: (x,0)):"
+        corte_x3 = "Cual es el corte en x3 (con este formato: (x,0)):"
+        lista_preguntas=[corte_y,corte_x1,corte_x2,corte_x3]
+        lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
+        return lista_preguntas,lista_respuestas,mensaje
     elif pregunta == preguntas[1]:
-        print(pregunta)
-        dominio = input("Cual es el dominio de la funcion: ")
-        rango = input("Cual es el rango de la funcion: ")  
-        if [dominio, rango] == dominio_rango:
-            print("Correcto")
-        else: 
-            print("Incorrecto")
+            dominio = "Cual es el dominio de la funcion: "
+            rango = "Cual es el rango de la funcion: "
+            lista_preguntas = [dominio,rango]
+            lista_respuestas = dominio_rango
+            return lista_preguntas,lista_respuestas,mensaje
 
 def f_raiz_cuadrada():
     global suma4
@@ -214,99 +179,50 @@ def f_raiz_cuadrada():
 
 
 def parte_entera():
-
-    decimal = round(random.uniform(-10, 10), 1) #genera un numero decimal aleatorio
-    x = [f"¡Rapido realiza la funcion parte entera: ⌊{decimal}⌋ ", f"¡Rapido realiza la funcion parte entera: ⌈{decimal}⌉ "] #preguntas posibles
-    preg_0 = random.choice(x) #elige una pregunta aleatoria
-    if preg_0 == x[0]:
-        print(x[0])
-        ans = int(input("Respuesta: "))
-        if ans == math.floor(decimal):
-            print("¡Correcto!")  
-        else: 
-            print("¡Incorrecto!")
-    elif preg_0 == x[1]:
-        print(x[1])
-        ans = int(input("Respuesta: "))
-        if ans == math.ceil(decimal) or (decimal < 0 and ans == math.floor(decimal)): #si el numero es negativo se redondea hacia abajo
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
+    lista_pregunta = ["Cual es el resultado :"]
+    ejercicios_parte_entera = [
+    ["F(x) = ⌊3.7⌋", ["3"]],
+    ["G(x) = ⌈sqrt 46⌉", ["6"]],
+    ["H(x) = ⌊2.5⌋", ["2"]],
+    ["J(x) = ⌈sqrt 61⌉", ["8"]],
+    ["K(x) = ⌊-pi⌋", ["-4"]]
+    ]
+    funcion,parte_entera = random.choice(ejercicios_parte_entera)  
+    preguntas = f"Rápido analiza la siguiente función: {funcion}" 
+    lista_respuestas = parte_entera
+    return lista_pregunta,lista_respuestas,preguntas
     
+
 def f_valor_absoluto():
-    a = random.randint(-50, 50)
-    b = random.randint(-50, 50)
-    if b < 0 < b or a > 1 or a <= -1:
-        print(f"¡Rapido realiza la funcion valor absoluto: |{a}x + ({b})| ")
-        ans_real = round((b*-1)/a, 2)
-        ans = input("Respuesta: ")
-    else:
-        random_f()
-    if ans == ans_real:
-        print("¡Correcto!")
-    else:
-        print(f"¡Incorrecto!, la respuesta era: {ans_real}")
+    lista_pregunta = ["Encuentra los puntos donde la funcion se anula "]  
+    funciones_absolutas = [
+        ["f(x)= |3X**2-75|",["+-5"]],
+        ["g(x)= |2x**2-32|",["+-4"]],
+        ["h(x)=|4x**2-36|",["+-3"]],
+        ["j(x)=|5x**2-25|",["+-1"]]
+        ]
+        
+    funcion,absoluto = random.choice(funciones_absolutas)
+    preguntas = f"Rapido analiza la siguente funcion: {funcion}"
+    
+    lista_repuesta = absoluto
+    return lista_pregunta,lista_repuesta,preguntas
         
 def inversa():
-    a = "Cual es la funcion inversa de: F(x) = 2x + 1"
-    b = "Cual es el punto de corte en X de: F(x) = 2x + 1"
-    c = "Cual es la funcion inversa de: G(x) = 3x - 2"
-    d = "Cual es el dominio y rango de: G^-1(y) = 2(y-1)"
-    e = "Cuales son los puntos de corte en X y en Y de: H(x) = 1/2x + 3"
-    originales = [a, b, c, d, e]
-    x = random.choice(originales)
+    lista_pregunta = ["Encuentra las la funcion inversa"]
+    funciones_inversas = [
+        ["F(x) = 2x + 1",[ " (x - 1) / 2"]],
+        ["G(x) = 3x - 2",[ "G^-1(x) = (x + 2) / 3"]],
+        ["H(x) = (x + 4) / 5", ["H^-1(x) = 5x - 4"]],
+        ["J(x) = (2x - 3) / 4", ["J^-1(x) = (4x + 3) / 2"]],
+        ["K(x) = (x - 7) / 3", ["K^-1(x) = 3x + 7"]]]
     
-    if x == a:
-        r_a = "f^-1(x)=(x-1)/2"
-        print(a)
-        r_u = input("Respuesta: ").lower().strip().replace(" ", "")
-        if r_u == r_a.lower().strip().replace(" ", ""):
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
+    funcion,inversa = random.choice(funciones_inversas)
+    preguntas = f"Rapido analiza la siguente funcion: {funcion}"
     
-    elif x == b:
-        r_b = "(-1/2,0)"
-        print(b)
-        r_u = input("Respuesta: ").lower().strip().replace(" ", "")
-        if r_u == r_b.lower().strip().replace(" ", ""):
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
+    lista_respuestas = inversa
     
-    elif x == c:
-        r_c = "g^-1(x)=(x+2)/3"
-        print(c)
-        r_u = input("Respuesta: ").lower().strip().replace(" ", "")
-        if r_u == r_c.lower().strip().replace(" ", ""):
-            print("¡Correcto!")
-        else:
-            print("¡Incorrecto!")
-    
-    elif x == d:
-        r_s = ["r", "losreales", "todoslosreales", "todoslosnumerosreales"]
-        print(d)
-        r_u = input("Dominio: ").lower().strip().replace(" ", "")
-        r_u2 = input("Rango: ").lower().strip().replace(" ", "")
-        if r_u and r_u2 in r_s:
-            print("¡Correcto!")
-            
-        else:
-            print("¡Incorrecto!")
-    
-    elif x == e:
-        r_e = "(-6,0)"
-        print(e)
-        r_u = input("Respuesta para X: ").lower().strip().replace(" ", "")
-        if r_u == r_e.lower().strip():
-            r_ey = "(0,3)"
-            r_uy = input("Respuesta para Y: ").lower().strip().replace(" ", "")
-            if r_uy == r_ey.lower().strip():
-                print("¡Correcto!")
-            else:
-                print("¡Incorrecto!")
-        else:
-            print("¡Incorrecto!")
+    return lista_pregunta,lista_respuestas,preguntas
     
     
     
@@ -323,5 +239,6 @@ if __name__ == '__main__':
     ]
     operandos = ["+", "-"]
     # cuadratica()
-    # cubica()
-    random_f()
+    inversa()
+    # random_f()
+    
