@@ -13,11 +13,11 @@ y=459
 puntos=0
 i=0
 vidas=9
-def puntuacion(ventana):
+def puntuacion(ventana): # <--- Aquí se crea la función que muestra la puntuación
     global puntos,vidas,x,y
-    if puntos==10:
-        mb.showinfo("Ganaste","Ganaste el juego")
-        respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno")
+    if puntos==10: #<--- Aquí se verifica si el usuario ya ganó
+        mb.showinfo("Ganaste","Ganaste el juego") # <--- Aquí se muestra un mensaje de que el usuario ganó
+        respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno") # <--- Aquí se pregunta si el usuario quiere volver a intentar
         if respuesta=="yes":
             vidas=9
             puntos=0 
@@ -33,7 +33,17 @@ def puntuacion(ventana):
         y=459
 
 
-def kamehameha(gif, label_gif, window):
+def fuego(fuego, window): # <-- animacion de fallos
+    x=1000
+    y=459
+    while x > 100:
+        fuego.place(x=x, y=y)
+        x -= 80
+        
+
+
+
+def kamehameha(gif, label_gif, window): # <-- animacion de aciertos
     global x, y, j, vidas, puntos
 
     if x < 1000:
