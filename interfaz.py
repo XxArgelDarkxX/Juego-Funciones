@@ -15,15 +15,17 @@ def juego():
     ventana.title("Juego Funciones")
     ventana.geometry("1550x900")
     ventana.configure(fg_color="#000014")
-    ventana.resizable(False, False)
-
+    ventana.resizable(False, False) # <--- Aquí se crea la ventana principal
+    #gift
+    gif = [ImageTk.PhotoImage(file="kamehameha.gif", format='gif -index %i' % i) for i in range(50)]  # <--- Aquí se carga el gif
+    label_gif = ctk.CTkLabel(ventana) # <--- Aquí se crea un label para mostrar el gif
     # frame imagen corazon
-    frame_corazon = ctk.CTkFrame(ventana)
+    frame_corazon = ctk.CTkFrame(ventana) # <--- Aquí se crea un frame para los corazones
     frame_corazon.place(x = 50, y = 765)
     frame_corazon.configure(fg_color= "#000014")
     imagen_corazon = Image.open("corazon.png")
     cora_roto = Image.open("corazon_muerte.png")
-    cora_roto = cora_roto.resize((75, 75))
+    cora_roto = cora_roto.resize((50, 50))
     foto1=ImageTk.PhotoImage(cora_roto)
     corazones = []
     for i in range(10):
@@ -90,7 +92,7 @@ def juego():
     
     #lista de preguntas desde la funcion de preguntas
     preguntas,respuestas,pregunta= f.random_f()
-    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana,foto1,label_aciertos)
+    mi.modificar_interfaz(preguntas,pregunta,respuestas,label_pregunta,buton_verficar,respuesta,label_pregunta_actualiza,corazones,ventana,foto1,label_aciertos,gif,label_gif)
 
         
     def play_video():
