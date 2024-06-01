@@ -26,7 +26,7 @@ def juego():
     # Frame for hearts
     frame_corazon = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_corazon.place(x=50, y=765)
-    imagen_corazon = ctk.CTkImage(light_image=Image.open("corazon.png").resize((60, 60)), size=(60, 60))
+    imagen_corazon = ctk.CTkImage(light_image=Image.open("corazon.png").resize((50, 50)), size=(50, 50))
     cora_roto = ctk.CTkImage(light_image=Image.open("corazon_muerte.png").resize((50, 50)), size=(50, 50))
     corazones = []
     for i in range(10):
@@ -36,7 +36,7 @@ def juego():
 
     # Frame for hits
     frame_aciertos = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
-    frame_aciertos.place(x=1000, y=900)
+    frame_aciertos.place(x=1000, y=750)
     label_aciertos = ctk.CTkLabel(frame_aciertos, text="Aciertos: 0", font=("Algerian", 35))
     label_aciertos.grid(row=0, column=0)
 
@@ -54,13 +54,13 @@ def juego():
 
     # Frame for video 1
     frame_video = ctk.CTkFrame(ventana, fg_color="red")
-    frame_video.place(x=1000, y=200)
+    frame_video.place(x=900, y=50)
     video_label = ctk.CTkLabel(frame_video, text="", font=("Arial", 20))
     video_label.grid(row=0, column=0)
 
     # Frame for video 2
     frame_video2 = ctk.CTkFrame(ventana, fg_color="red")
-    frame_video2.place(x=-70, y=459)
+    frame_video2.place(x=-70, y=300)
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
 
@@ -171,14 +171,14 @@ def menu():
 
     # Dragon image frame
     frame_dragon = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
-    frame_dragon.place(x=1000, y=250)
+    frame_dragon.place(x=900, y=250)
     imagen_dragon_menu = ctk.CTkImage(light_image=Image.open("dragon_1.png").resize((600, 600)), size=(600, 600))
     label_dragon_menu = ctk.CTkLabel(frame_dragon, text="", image=imagen_dragon_menu)
     label_dragon_menu.grid(row=0, column=0)
 
     # Pencil image frame
     frame_lapiz = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
-    frame_lapiz.place(x=50, y=50)
+    frame_lapiz.place(x=100, y=400)
     imagen_lapiz_menu = ctk.CTkImage(light_image=Image.open("lapiz_menu.png").resize((400, 400)), size=(400, 400))
     label_lapiz_menu = ctk.CTkLabel(frame_lapiz, text="", image=imagen_lapiz_menu)
     label_lapiz_menu.grid(row=0, column=0)
