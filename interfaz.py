@@ -156,7 +156,7 @@ def info(window):
     ventana.configure(fg_color="#000014")
     ventana.resizable(False, False)
     label_info = ctk.CTkLabel(ventana, text="", font=("Arial", 30))
-    label_info.place(x = 50, y = 50)
+    label_info.place(x = 250, y = 50)
     button_regresar = ctk.CTkButton(ventana, text="Regresar", font=("Arial", 20), width=10, height=2, command=lambda: return_to_menu(ventana))  # Botón para regresar al menú
     button_regresar.place(x = 50, y = 800)
 
@@ -177,7 +177,7 @@ def info(window):
 
     def update_text(i=0):
         if i < len(message):
-            label_info.configure(text=label_info.cget("text") + message[i])
+            label_info.configure(text=label_info.cget("text") + message[i],font=("Kristen ITC",20))
             ventana.after(25, update_text, i + 1)  # Agrega una letra cada 100 milisegundos
 
     update_text()  # Comienza la animación
@@ -191,21 +191,55 @@ def menu():
     ventana.configure(fg_color="#000014")
     ventana.resizable(False, False)
     
+
+    # frame imagen lapiz
+    frame_lapiz = ctk.CTkFrame(ventana)
+    frame_lapiz.place(x = 10, y = 350)
+    frame_lapiz.configure(fg_color="#000014")
+    imagen_lapiz_menu = Image.open("lapiz_menu.png")
+    imagen_lapiz_menu = imagen_lapiz_menu.resize((600, 600))
+    foto_lapiz_menu = ImageTk.PhotoImage(imagen_lapiz_menu)
+    label_lapiz_menu = ctk.CTkLabel(frame_lapiz, text="", image=foto_lapiz_menu)
+    label_lapiz_menu.grid(row=0, column=0)
+   
+   # frame imagen fx
+    frame_fx = ctk.CTkFrame(ventana)
+    frame_fx.place(x = 1100, y = 350)
+    frame_fx.configure(fg_color="#000014")
+    imagen_fx_menu = Image.open("fx_menu.png")
+    imagen_fx_menu = imagen_fx_menu.resize((400,400))
+    foto_fx_menu = ImageTk.PhotoImage(imagen_fx_menu)
+    label_fx_menu = ctk.CTkLabel(frame_fx, text="", image=foto_fx_menu)
+    label_fx_menu.grid(row=0, column=0)
+    
+
+    
     frame_menu = ctk.CTkFrame(ventana)
-    frame_menu.place(x = 300, y = 200)
+    frame_menu.place(x = 650, y = 50)
     frame_menu.configure(fg_color="#000014")
     
-    label_menu = ctk.CTkLabel(frame_menu, text="Juego de Funciones", font=("Arial", 30))
-    label_menu.grid(row=0, column=0)
+    label_menu = ctk.CTkLabel(frame_menu, text="Juego de Funciones", font=("Kristen ITC", 30))
+    label_menu.grid(row=5, column=0)
     
-    button_jugar = ctk.CTkButton(frame_menu, text="Jugar", font=("Arial", 20), width=10, height=2)
-    button_jugar.grid(row=1, column=0)
+    # frame boton jugar
+    frame_boton_jugar = ctk.CTkFrame(ventana)
+    frame_boton_jugar.place(x = 650, y = 200)
+    button_jugar = ctk.CTkButton(frame_boton_jugar, text="Jugar", font=("Kristen ITC", 30), width=300, height= 50)
+    button_jugar.grid(row=0, column=0)
     
-    button_info = ctk.CTkButton(frame_menu, text="Información", font=("Arial", 20), width=10, height=2, command=lambda: info(ventana))
-    button_info.grid(row=2, column=0)
+    # frame boton info
+    frame_boton_info = ctk.CTkFrame(ventana)
+    frame_boton_info.place(x = 650, y = 400)
     
-    button_salir = ctk.CTkButton(frame_menu, text="Salir", font=("Arial", 20), width=10, height=2)
-    button_salir.grid(row=3, column=0)
+    button_info = ctk.CTkButton(frame_boton_info, text="Información", font=("Kristen ITC", 30), width=300, height=50, command=lambda: info(ventana))
+    button_info.grid(row=0, column=0)
+    
+    # frame boton salir
+    frame_boton_salir = ctk.CTkFrame(ventana)
+    frame_boton_salir.place(x = 650, y = 600)
+    
+    button_salir = ctk.CTkButton(frame_boton_salir, text="Salir", font=("Kristen ITC", 30), width=300, height=50)
+    button_salir.grid(row=0, column=0)
     
     def jugar():
         ventana.destroy()
