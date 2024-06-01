@@ -39,7 +39,7 @@ def lineal():
     ejercicios_funciones_lineales = [
     ["f(x) = 3x + 2", ["-2/3"],["2"],["creciente"]],
     ["g(x) = -2x - 5", ["-5/2"], ["-5"],["decreciente"]],
-    ["h(x) = 4x - 1", ["0"], ["-1"],["creciente"]],
+    ["h(x) = 4x - 1", ["1/4"], ["-1"],["creciente"]],
     ["j(x) = -x + 3", ["3"], ["3"],["decreciente"]],
     ["k(x) = 2x", ["0"], ["0"],["creciente"]]
     ]
