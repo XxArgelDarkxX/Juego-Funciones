@@ -193,6 +193,19 @@ def menu():
     ventana.configure(fg_color="#000014")
     ventana.resizable(False, False)
     
+    # frame imagen dragon
+    frame_dragon = ctk.CTkFrame(ventana)
+    frame_dragon.place(x = 1000, y = 250)
+    frame_dragon.configure(fg_color="#000014")
+    imagen_dragon_menu = Image.open("dragon_1.png")
+    
+    
+    
+    imagen_dragon_menu = imagen_dragon_menu.resize((600, 600))
+    foto_dragon_menu = ImageTk.PhotoImage(imagen_dragon_menu)
+    label_dragon_menu = ctk.CTkLabel(frame_dragon, text="", image=foto_dragon_menu)
+    label_dragon_menu.grid(row=0, column=0)
+    
 
     # frame imagen lapiz
     frame_lapiz = ctk.CTkFrame(ventana)
@@ -206,7 +219,7 @@ def menu():
    
    # frame imagen fx
     frame_fx = ctk.CTkFrame(ventana)
-    frame_fx.place(x = 1100, y = 350)
+    frame_fx.place(x = 50, y = 50)
     frame_fx.configure(fg_color="#000014")
     imagen_fx_menu = Image.open("fx_menu.png")
     imagen_fx_menu = imagen_fx_menu.resize((400,400))
