@@ -127,7 +127,7 @@ def f_raiz_cuadrada():
     functions = [
         ["sqrt(x)", "x|x>=0", "0", "0"],                              # Función raíz cuadrada de x
         ["sqrt(x^2 - 9)", "x|x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
-        ["sqrt(4x^2 + 16x + 16)", "x|x>=-2", "-2", "0", "4sqrt(2)"],  # Función raíz cuadrada de 4x^2 + 16x + 16
+        ["sqrt(4x^2 + 16x + 16)", "R", "-2", "-2", "4"],  # Función raíz cuadrada de 4x^2 + 16x + 16
         ["sqrt(x-1)", "x|x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
         ["sqrt(4-x^2)", "x|x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
     ]
