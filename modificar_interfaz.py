@@ -13,35 +13,54 @@ y=459
 puntos=0
 i=0
 vidas=9
-def kamehameha(gif,label_gif):
-    global x,y,j
-    if x<1000:
-        label_gif.place(x=x,y=y)
-        label_gif.configure(image=gif[j])
-        label_gif.update_idletasks()
-        t.sleep(0.1)
-        x+=10
-        j+=1
-        label_gif.update_idletasks()
-        if j==50:
-            j=0
-        kamehameha(gif,label_gif)
+def puntuacion(ventana):
+    global puntos,vidas,x,y
+    if puntos==10:
+        mb.showinfo("Ganaste","Ganaste el juego")
+        respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno")
+        if respuesta=="yes":
+            vidas=9
+            puntos=0 
+            x=100
+            y=459
+            ventana.destroy()
+            interfaz.juego()
+        else:
+            mb.showinfo("Gracias por jugar","Gracias por jugar")
+            ventana.destroy()
     else:
-        mb.showinfo("ganaste","felicidades ganaste")
+        x=100
+        y=459
+
+
+def kamehameha(gif, label_gif, window):
+    global x, y, j, vidas, puntos
+
+    if x < 1000:
+        label_gif.place(x=x, y=y)
+        label_gif.configure(image=gif[j])
+        j += 1
+
+        if j == 50:
+            j = 0
+
+        x += 80  # Move the image to the right
+
+        window.after(100, label_gif.place_forget)  # Hide the image after 100 ms
+        window.after(100, lambda: kamehameha(gif, label_gif, window))  # Call kamehameha again after 100 ms
+    else:
+        puntuacion(window)
 
 # verifica que la respuesta este bien y que la lista no haya acabado
 def verificar(respond,respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif):
-    global i,vidas,puntos
-    if respond==respond_entry.get(): # <--- Aquí se compara la respuesta del usuario con la respuesta correcta
+    global i,vidas,puntos,x,y,j
+    if respond==respond_entry.get().strip(): # <--- Aquí se compara la respuesta del usuario con la respuesta correcta
         respond_entry.delete(0, ctk.END)
         mb.showinfo("Correcto","Respuesta correcta") # <--- Aquí se muestra un mensaje de que la respuesta es correcta 
         puntos+=1
         aciertos.configure(text="Aciertos: "+str(puntos)) # <--- Aquí se actualiza el número de aciertos
-        if puntos==1: # <--- Aquí se verifica si el usuario ya respondió 10 preguntas
-            mb.showinfo("Ganaste","Ganaste el juego")
-            kamehameha(gif,label_gif)
-            
-        i+=1
+        kamehameha(gif,label_gif,ventana)
+        i+=1 # <--- Aquí se aumenta el contador de preguntas
         if i==len(ask) : # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
             i=0 # <--- Aquí se reinicia el contador de preguntas
             preguntas,respuestas,pregunta=f.random_f() # <--- Aquí se obtienen nuevas preguntas
@@ -83,4 +102,8 @@ def modificar_interfaz(ask,see,respond,label_ask,button,respond_entry,label_see,
         ask,see,respond=f.random_f() # <--- Aquí se obtienen nuevas preguntas
     label_ask.configure(text=see)  # <--- Aquí se actualiza la función
     label_see.configure(text=ask[i]) # <--- Aquí se actualiza la pregunta
+    button.focus_set() # <--- Aquí se le da el foco al botón
+    respond_entry.focus_set() # <--- Aquí se le da el foco al entry
+    respond_entry.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al entry
+    button.bind("<Return>", lambda event: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al botón
     button.configure(command=lambda: verificar(respond[i],respond_entry,label_see,ask,label_ask,button,corazones,ventana,foto,aciertos,gif,label_gif)) # <--- Aquí se le asigna la función verificar al botón
