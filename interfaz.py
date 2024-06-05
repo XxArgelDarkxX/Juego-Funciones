@@ -6,16 +6,17 @@ import time
 from tkinter import messagebox as mb
 import funciones as f
 import modificar_interfaz as mi
-
+import numpy as np
 # Global color setting
 BACKGROUND_COLOR = "#000014"
+# color fondo nuevo #033247
 
 # Main game function
 def juego():
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
     ventana.geometry("1550x900")
-    ventana.configure(fg_color=BACKGROUND_COLOR)
+    ventana.configure(fg_color= "#033247")
     ventana.resizable(False, False)
 
     # Load GIF
@@ -25,7 +26,7 @@ def juego():
     fuego_frames = [Image.open("fire_ball.gif").convert('RGBA') for i in range(50)]
     fuego = [ctk.CTkImage(light_image=frame, dark_image=frame, size=(frame.width, frame.height)) for frame in fuego_frames]
     label_fuego = ctk.CTkLabel(ventana)
-    # Frame for hearts
+    # Frame corazones
     frame_corazon = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_corazon.place(x=50, y=765)
     imagen_corazon = ctk.CTkImage(light_image=Image.open("corazon.png").resize((50, 50)), size=(50, 50))
@@ -56,13 +57,13 @@ def juego():
 
     # Frame for video 1
     frame_video = ctk.CTkFrame(ventana, fg_color="red")
-    frame_video.place(x=900, y=50)
+    frame_video.place(x=1050, y=250)
     video_label = ctk.CTkLabel(frame_video, text="", font=("Arial", 20))
     video_label.grid(row=0, column=0)
 
     # Frame for video 2
     frame_video2 = ctk.CTkFrame(ventana, fg_color="red")
-    frame_video2.place(x=-70, y=300)
+    frame_video2.place(x=-70, y=500)
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
 
@@ -82,7 +83,7 @@ def juego():
     # Binding Enter key to the verify button    
     ventana.bind("<Escape>", lambda event: ventana.destroy())
 
-    # Load videos
+    # Cargar videos
     cap = cv2.VideoCapture('dragon.mp4')
     cap2 = cv2.VideoCapture('lapiz.mp4')
 
@@ -96,10 +97,10 @@ def juego():
             if not ret:
                 cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
-            frame = cv2.resize(frame, (700, 700))
+
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(image)
-            image = ctk.CTkImage(light_image=image, size=(700, 700))
+            image = ctk.CTkImage(light_image=image, size=(500, 500))
             video_label.configure(image=image)
             video_label.image = image
             time.sleep(0.05)
@@ -110,10 +111,11 @@ def juego():
             if not ret:
                 cap2.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
-            frame = cv2.resize(frame, (400, 300))
+            
+            frame = cv2.resize(frame, (200, 200))
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(image)
-            image = ctk.CTkImage(light_image=image, size=(400, 300))
+            image = ctk.CTkImage(light_image=image, size=(200, 200))
             video_label2.configure(image=image)
             video_label2.image = image
             time.sleep(0.03)
@@ -134,7 +136,7 @@ def info(window):
     window.destroy()
     ventana = ctk.CTk()
     ventana.geometry("1550x900")
-    ventana.configure(fg_color=BACKGROUND_COLOR)
+    ventana.configure(fg_color= "#033247")
     ventana.resizable(False, False)
     label_info = ctk.CTkLabel(ventana, text="", font=("Arial", 30))
     label_info.place(x=250, y=50)
