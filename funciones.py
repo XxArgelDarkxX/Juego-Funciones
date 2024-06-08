@@ -7,7 +7,7 @@ import modificar_interfaz as mi
 
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funciones = ["funcion inversa","funcion valor absoluto","funcion parte entera","funcion raiz cuadrada","funcion cubica","funcion cuadratica","funcion lineal"]
+    funciones = ["funcion inyectividad","funcion hiperbolicas","funcion exponencial","funcion logaritmica","funcion inversa","funcion valor absoluto","funcion parte entera","funcion impar par","funcion cuadratica","funcion cubica","funcion raiz cuadrada","funcion lineal"]
     
 
     funcion_aleatoria = random.choice(funciones)
@@ -33,7 +33,22 @@ def random_f(): #funcion de py para elegir una funcion aleatoria
     elif funcion_aleatoria == 'funcion inversa':
         preguntas,respuestas,pregunta = inversa()
         return preguntas,respuestas,pregunta
-
+    elif funcion_aleatoria == 'funcion logaritmica':
+        preguntas,respuestas,pregunta = logaritmica()
+        return preguntas,respuestas,pregunta
+    elif funcion_aleatoria == 'funcion exponencial':
+        preguntas,respuestas,pregunta = exponencial()
+        return preguntas,respuestas,pregunta
+    elif funcion_aleatoria == 'funcion hiperbolicas':
+        preguntas,respuestas,pregunta = hiperbolicas()
+        return preguntas,respuestas,pregunta
+    elif funcion_aleatoria == 'funcion impar par':
+        preguntas,respuestas,pregunta = impar_par()
+        return preguntas,respuestas,pregunta
+    elif funcion_aleatoria == 'funcion inyectividad':
+        preguntas,respuestas,pregunta = inyectibilidad()
+        return preguntas,respuestas,pregunta
+    
 def lineal():
     
     ejercicios_funciones_lineales = [
@@ -216,7 +231,8 @@ def inversa():
         ["G(x) = 3x - 2",[ "g^-1(x) = (x + 2) / 3"]],
         ["H(x) = (x + 4) / 5", ["h^-1(x) = 5x - 4"]],
         ["J(x) = (2x - 3) / 4", ["j^-1(x) = 2x+3/2"]],
-        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]]]
+        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]]
+        ["¿Una funcion que al aplicarse una funcion compuesta\ncon otra funcion produce el argumento?", ["verdadero"]]]
     
     funcion,inversa = random.choice(funciones_inversas)
     preguntas = f"Rapido analiza la siguente funcion: {funcion}"
@@ -225,18 +241,68 @@ def inversa():
     
     return lista_pregunta,lista_respuestas,preguntas
     
-    
-    
 
+def logaritmica():
+    lista_pregunta = ["Analiza la pregunta"]
+    
+    preguntas_logaritmicas = [["¿cual es la base que tiene el logaritmo? natural", ["e"]],
+    ["¿cual es la base que tiene el logaritmo si no se especifica la base?", ["10"]],
+    ["segun la propiedad de los logaritmos log(a*b) es igual a \nlog(a) + log(b), ¿verdadero o falso?", ["verdadero"]],
+    ["segun la propiedad de los logaritmos log(a/b) es  igual a\n log(a) * log(b), ¿verdadero o falso?", ["falso"]],
+    ["¿la funcione inversa del logaritmo es x**2¿ verdadero o falso?", ["falso"]],
+    ["¿cual es el dominio de f(x) = log(x**2 - 4)", ["(-oo,-2)u (2,oo)"]]]
+    funcion,respuesta = random.choice(preguntas_logaritmicas)
+    preguntas = f" {funcion}"
+    return lista_pregunta,respuesta,preguntas
+    
+def exponencial():
+    lista_pregunta = ["Analiza la pregunta"]
+    
+    preguntas_exponenciales = [["¿la funcion inversa de la funcion exponencial es el logaritmo? \nverdadero o falso", ["verdadero"]],
+                               ["¿Qué representa la base en una función exponencial?", ["la tasa de crecimiento o decrecimiento"]],
+                               ["¿la funciones f(x)= 2**x es creciente o decreciente?",[ "creciente"]],
+                                ["¿el dominio de una funciones exponencial son todos los reales? \nverdadero o falso", ["verdadero"]],
+                                ["¿cuales de las siguentes funciones es una funcion exponencias?\n a) f(x)=mx+b b) f(x)= x**2 c) f(x) = (1/2)**x",["c"]]]
+    
+    funcion,respuesta = random.choice(preguntas_exponenciales)
+    preguntas = f" {funcion}"
+    return lista_pregunta,respuesta,preguntas
+
+def hiperbolicas():
+    lista_pregunta = ["Analiza la pregunta"]
+    
+    preguntas_hiperbolicas = [["¿la funcion inversa de f(X) = sinh(x) es f^-1(x) = ln(x + sqrt(x**2 + 1))?\nverdadero o falso", ["verdadero"]],
+                              ["¿la funcion inversa de f(X) = cosh(x) es f^-1(x) = ln(x + sqrt(x**2 - 2))?\nverdadero o falso", ["falso"]],
+                              ["Cosh (x) = (e**x + e**-x) / 2 \n verdadero o falso", ["verdadero"]],
+                              ["sinh(x) = (e**x - e**-x) / 4 \n verdadero o falso", ["falso"]]]
+                            
+
+    funcion,respuesta = random.choice(preguntas_hiperbolicas)
+    preguntas = f" {funcion}"
+    return lista_pregunta,respuesta,preguntas
+
+def impar_par():
+    lista_pregunta = ["Analiza la pregunta"]
+    preguntas_pares_impares = [["¿la funcion f(x) = x**2 es par o impar?", ["par"]],
+                               ["¿la funcion f(x) = cos(x) es par o impar?", ["par"]],
+                               ["¿la funcion f(x) = x**4 es par o impar?", ["par"]],
+                               ["¿la funcion f(x) = x**5 es par o impar?", ["impar"]],
+                               ["¿la funcion f(x) = x**3-x es par o impar?", ["impar"]]]
+    funcion,respuesta = random.choice(preguntas_pares_impares)
+    preguntas = f" {funcion}"
+    return lista_pregunta,respuesta,preguntas
+
+def inyectibilidad():
+    lista_pregunta = ["Analiza la pregunta"]
+    preguntas_inyectibilidad = [["¿la funcion f(x) = x**2 es inyectiva?\nverdadero o falso", ["falso"]],
+                                ["¿la funcion f(X) = 2x -3 es inyectiva?\nverdadero o falso", ["verdadero"]],
+                              ["en una funcion inyectiva, cada valor de x tiene un unico valor de y asociado\nverdadero o falso", ["verdadero"]],
+                              ["¿la funcion f(x) = x**3 es inyectiva?\nverdadero o falso", ["verdadero"]]]
+                              
+    funcion,respuesta = random.choice(preguntas_inyectibilidad)
+    preguntas = f" {funcion}"
+    return lista_pregunta,respuesta,preguntas
+    
 if __name__ == '__main__':
-    funciones = [
-    "Funcion Lineal",
-    "Funcion Cuadratica",
-    "Funcion Cubica",
-    "Funcion Raiz Cuadrada",
-    "Funcion Parte Entera",
-    "Funcion Valor Absoluto",
-    "Funcion Inversa"
-    ]
     
-    
+    random_f()
