@@ -7,6 +7,7 @@ from tkinter import messagebox as mb
 import funciones as f
 import modificar_interfaz as mi
 import numpy as np
+import random
 # Global color setting
 BACKGROUND_COLOR = "#033247"
 # color fondo nuevo #033247
@@ -14,7 +15,9 @@ BACKGROUND_COLOR = "#033247"
 # Main game function
 
 
+
 def juego():
+    global cap
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
     ventana.geometry("1550x900")
@@ -96,9 +99,28 @@ def juego():
 
     # Binding Enter key to the verify button
     ventana.bind("<Escape>", lambda event: ventana.destroy())
+    
+    # lista de enemigos
+    enemigos = ["dragon.mp4","enemigo.mp4","enemigo1.mp4","enemigo2.mp4","enemigo3.mp4"]
+    
+    
 
-    # Cargar videos
-    cap = cv2.VideoCapture('dragon.mp4')
+    def cambiar_enemigo():
+        global indice_enemigo
+        indice_enemigo += 1  # Mueve al siguiente enemigo
+        if indice_enemigo >= len(enemigos):  # Si supera la cantidad de enemigos, reinicia
+            indice_enemigo = 0
+        # Aquí deberías actualizar la interfaz para mostrar el nuevo enemigo
+        # Por ejemplo, si tienes un label para el enemigo, podrías hacer:
+        video_label.configure(image=enemigos[indice_enemigo])  # Asegúrate de tener las imágenes cargadas correctamente
+
+       
+        
+  
+    
+    
+    
+    cap = cv2.VideoCapture("dragon.mp4")
     cap2 = cv2.VideoCapture('lapiz.mp4')
 
     # Load questions and answers
@@ -107,6 +129,7 @@ def juego():
                           label_pregunta_actualiza, corazones, ventana, cora_roto, label_aciertos, gif, label_gif, fuego, label_fuego)
 
     def play_video():
+
         while True:
             ret, frame = cap.read()
             if not ret:
@@ -119,6 +142,7 @@ def juego():
             video_label.configure(image=image)
             video_label.image = image
             time.sleep(0.05)
+        
 
     def play_video2():
         while True:
@@ -134,7 +158,11 @@ def juego():
             video_label2.configure(image=image)
             video_label2.image = image
             time.sleep(0.03)
+            
 
+   
+        
+        
     # Create and start new threads for playing videos
     thread = threading.Thread(target=play_video)
     thread2 = threading.Thread(target=play_video2)
@@ -257,3 +285,4 @@ def jugar(ventana):
 
 if __name__ == "__main__":
     menu()
+    

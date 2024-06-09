@@ -1,0 +1,41 @@
+import threading
+import cv2
+from PIL import Image
+import customtkinter as ctk
+import time
+
+# Supongamos que esta es la lista de videos para cada nivel
+videos_por_nivel = [
+    "path/to/video1.mp4",
+    "path/to/video2.mp4",
+    "path/to/video3.mp4",
+    # Agrega más videos según los niveles que tengas
+]
+
+nivel_actual = 0  # Inicia en el primer nivel
+
+def play_video(video_path):
+    cap = cv2.VideoCapture(video_path)
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            continue
+
+        frame = cv2.resize(frame, (200, 200))
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image = Image.fromarray(image)
+        image = ctk.CTkImage(light_image=image, size=(200, 200))
+        video_label.configure(image=image)
+        video_label.image = image
+        time.sleep(0.03)
+
+def cambiar_nivel(nuevo_nivel):
+    global nivel_actual, thread
+    nivel_actual = nuevo_nivel
+    video_path = videos_por_nivel[nivel_actual]
+    
+    # Detener el thread actual si está activo
+    if thread.is_alive():
+        cap.release()  # Asegúrate de liberar el recurso de captura
+        thread.join()  # Espera a que el thread actual termine

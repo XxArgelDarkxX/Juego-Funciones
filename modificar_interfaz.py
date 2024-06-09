@@ -6,6 +6,10 @@ import time as t
 from PIL import Image, ImageTk
 import tkinter as tk
 import pygame as pg 
+import random
+import cv2
+
+
 global i,vidas,puntos,x,y,j
 j=0
 x=100
@@ -13,9 +17,33 @@ y=459
 puntos=0
 i=0
 vidas=9
+nivel_actual = 1
+
+
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
 def puntuacion(ventana): # <--- Aquí se crea la función que muestra la puntuación
     global puntos,vidas,x,y
     if puntos==10: #<--- Aquí se verifica si el usuario ya ganó
+        
         mb.showinfo("Ganaste","Ganaste el juego") # <--- Aquí se muestra un mensaje de que el usuario ganó
         respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno") # <--- Aquí se pregunta si el usuario quiere volver a intentar
         if respuesta=="yes":
@@ -76,6 +104,7 @@ def verificar(respond,respond_entry,label_see,ask,label_ask,button,corazones,ven
         respond_entry.delete(0, ctk.END)
         mb.showinfo("Correcto","Respuesta correcta") # <--- Aquí se muestra un mensaje de que la respuesta es correcta 
         puntos+=1
+        
         aciertos.configure(text="Aciertos: "+str(puntos)) # <--- Aquí se actualiza el número de aciertos
         kamehameha(gif,label_gif,ventana)
         i+=1 # <--- Aquí se aumenta el contador de preguntas
@@ -92,6 +121,7 @@ def verificar(respond,respond_entry,label_see,ask,label_ask,button,corazones,ven
         mb.showinfo("Incorrecto","Respuesta incorrecta") # <--- Aquí se muestra un mensaje de que la respuesta es incorrecta
         corazones[vidas].configure(image=foto) # <--- Aquí se cambia la imagen del corazón
         vidas-=1
+        
         fuego(fire,label_fire)
         if vidas==-1: # <--- Aquí se verifica si el usuario ya no tiene vidas
             mb.showerror("Perdiste","Perdiste todas tus vidas")
