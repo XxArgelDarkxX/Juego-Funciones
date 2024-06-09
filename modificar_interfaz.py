@@ -5,7 +5,7 @@ from tkinter import messagebox as mb
 import time as t
 from PIL import Image, ImageTk
 import tkinter as tk
-import pygame as pg
+
 global i, vidas, puntos, x, y, j, nivel
 j = 0
 x = 100
@@ -26,22 +26,32 @@ def puntuacion(ventana,corazones):  # <--- Aquí se crea la función que muestra
             for i in range(9,7,-1):
                 corazones[i].grid_forget()
                 mb.showinfo("Nivel 2", "Felicidades, has pasado al nivel 2")
+                interfaz.cambiar_enemigo()
                 ventana.update_idletasks()
+                
         elif nivel == 2:
             for i in range(7,5,-1):
                 corazones[i].grid_forget()
                 vidas = 5
+                mb.showinfo("Nivel 3", "Felicidades, has pasado al nivel 3")
+                interfaz.cambiar_enemigo()
                 ventana.update_idletasks()
+                
         elif nivel == 3:
             for i in range(5,3,-1):
                 corazones[i].grid_forget()
                 vidas = 3
+                mb.showinfo("Nivel 4", "Felicidades, has pasado al nivel 4")
+                interfaz.cambiar_enemigo()
                 ventana.update_idletasks()
         elif nivel == 4:
             for i in range(3,1,-1):
                 corazones[i].grid_forget()
                 vidas = 1
+                mb.showinfo("Nivel 5", "Felicidades, has pasado al nivel 5")
+                interfaz.cambiar_enemigo()
                 ventana.update_idletasks()
+                
     else:
         x = 100
         y = 459
