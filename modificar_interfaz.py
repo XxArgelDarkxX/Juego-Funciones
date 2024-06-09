@@ -5,7 +5,6 @@ from tkinter import messagebox as mb
 import time as t
 from PIL import Image, ImageTk
 import tkinter as tk
-<<<<<<< HEAD
 import pygame as pg
 global i, vidas, puntos, x, y, j, nivel
 j = 0
@@ -43,59 +42,6 @@ def puntuacion(ventana,corazones):  # <--- Aquí se crea la función que muestra
                 corazones[i].grid_forget()
                 vidas = 1
                 ventana.update_idletasks()
-=======
-import pygame as pg 
-import random
-import cv2
-
-
-global i,vidas,puntos,x,y,j
-j=0
-x=100
-y=459
-puntos=0
-i=0
-vidas=9
-nivel_actual = 1
-
-
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-def puntuacion(ventana): # <--- Aquí se crea la función que muestra la puntuación
-    global puntos,vidas,x,y
-    if puntos==10: #<--- Aquí se verifica si el usuario ya ganó
-        
-        mb.showinfo("Ganaste","Ganaste el juego") # <--- Aquí se muestra un mensaje de que el usuario ganó
-        respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno") # <--- Aquí se pregunta si el usuario quiere volver a intentar
-        if respuesta=="yes":
-            vidas=9
-            puntos=0 
-            x=100
-            y=459
-            ventana.destroy()
-            interfaz.juego()
-        else:
-            mb.showinfo("Gracias por jugar","Gracias por jugar")
-            ventana.destroy()
->>>>>>> a2a26d7735fb60e43bdc267c5199b0eedd23f3b2
     else:
         x = 100
         y = 459
@@ -162,7 +108,6 @@ def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazon
         label_see.update_idletasks()  # <-- actualiza la interfaz
         # <--- Aquí se borra el contenido del entry
         respond_entry.delete(0, ctk.END)
-<<<<<<< HEAD
         return True
     else:
         # <--- Aquí se borra el contenido del entry
@@ -180,35 +125,6 @@ def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazon
             if respuesta == "yes":
                 vidas = 9
                 puntos = 0
-=======
-        mb.showinfo("Correcto","Respuesta correcta") # <--- Aquí se muestra un mensaje de que la respuesta es correcta 
-        puntos+=1
-        
-        aciertos.configure(text="Aciertos: "+str(puntos)) # <--- Aquí se actualiza el número de aciertos
-        kamehameha(gif,label_gif,ventana)
-        i+=1 # <--- Aquí se aumenta el contador de preguntas
-        if i==len(ask) : # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
-            i=0 # <--- Aquí se reinicia el contador de preguntas
-            preguntas,respuestas,pregunta=f.random_f() # <--- Aquí se obtienen nuevas preguntas
-            return modificar_interfaz(preguntas,pregunta,respuestas,label_ask,button,respond_entry,label_see,corazones,ventana,foto,aciertos,gif,label_gif,fire,label_fire) # <--- Aquí se llama a la función que modifica la interfaz
-        label_see.configure(text=ask[i])  # <--- Aquí se actualiza la pregunta 
-        label_see.update_idletasks()  #  <-- actualiza la interfaz
-        respond_entry.delete(0, ctk.END) # <--- Aquí se borra el contenido del entry
-        return True
-    else:
-        respond_entry.delete(0, ctk.END) # <--- Aquí se borra el contenido del entry
-        mb.showinfo("Incorrecto","Respuesta incorrecta") # <--- Aquí se muestra un mensaje de que la respuesta es incorrecta
-        corazones[vidas].configure(image=foto) # <--- Aquí se cambia la imagen del corazón
-        vidas-=1
-        
-        fuego(fire,label_fire)
-        if vidas==-1: # <--- Aquí se verifica si el usuario ya no tiene vidas
-            mb.showerror("Perdiste","Perdiste todas tus vidas")
-            respuesta=mb.showinfo("intentae","quieres volver a intentar?",type="yesno")
-            if respuesta=="yes":
-                vidas=9
-                puntos=0 
->>>>>>> a2a26d7735fb60e43bdc267c5199b0eedd23f3b2
                 ventana.destroy()
                 interfaz.juego()
             else:
