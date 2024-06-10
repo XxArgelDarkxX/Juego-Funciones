@@ -60,6 +60,10 @@ def juego():
         frame_aciertos, text="Aciertos: 0", font=("Algerian", 35))
     label_aciertos.grid(row=0, column=0)
 
+    
+    label_level = ctk.CTkLabel(
+        frame_aciertos, text="Nivel: 1", font=("Algerian", 35))
+    label_level.grid(row=2,column=0)
     # Frame for question
     frame_pregunta = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_pregunta.place(x=300, y=20)
@@ -123,7 +127,8 @@ def juego():
     # Load questions and answers
     preguntas, respuestas, pregunta = f.random_f()
     mi.modificar_interfaz(preguntas, pregunta, respuestas, label_pregunta, buton_verficar, respuesta,
-                          label_pregunta_actualiza, corazones, ventana, cora_roto, label_aciertos, gif, label_gif, fuego, label_fuego)
+                          label_pregunta_actualiza, corazones, ventana, cora_roto, label_aciertos, gif, label_gif, fuego, label_fuego, label_level,
+                          imagen_corazon)
 
     def play_video():
         global cap, video_label

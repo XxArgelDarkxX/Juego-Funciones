@@ -8,7 +8,7 @@ import modificar_interfaz as mi
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
     funciones = ["funcion inyectividad","funcion hiperbolicas","funcion exponencial","funcion logaritmica","funcion inversa","funcion valor absoluto","funcion parte entera","funcion impar par","funcion cuadratica","funcion cubica","funcion raiz cuadrada","funcion lineal"]
-    
+    random.shuffle(funciones)
 
     funcion_aleatoria = random.choice(funciones)
     if funcion_aleatoria == 'funcion lineal':

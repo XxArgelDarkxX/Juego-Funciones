@@ -1,3 +1,4 @@
+from cProfile import label
 import customtkinter as ctk
 import funciones as f
 import interfaz
@@ -16,41 +17,58 @@ vidas = 9
 nivel = 0
 
 
-def puntuacion(ventana,corazones):  # <--- Aquí se crea la función que muestra la puntuación
+def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se crea la función que muestra la puntuación
     global puntos, vidas, x, y, nivel
-    if puntos >= 1:  # <--- Aquí se verifica si el usuario ya ganó
+    if puntos == 3:  # <--- Aquí se verifica si el usuario ya ganó
         # <--- Aquí se muestra un mensaje de que el usuario ganó
+        puntos = 0
         mb.showinfo("Ganaste", "Ganaste el juego")
         nivel += 1
         if nivel == 1:
             for i in range(9,7,-1):
                 corazones[i].grid_forget()
-                mb.showinfo("Nivel 2", "Felicidades, has pasado al nivel 2")
-                interfaz.cambiar_enemigo()
-                ventana.update_idletasks()
-                
+            mb.showinfo("Nivel 2", "Felicidades, has pasado al nivel 2")
+            label_level.configure(text="Nivel 2")
+            vidas = 7
+            for j in range(8):
+                corazones[j].configure(image=imagen_corazon)
+            interfaz.cambiar_enemigo()
+            ventana.update_idletasks()
+        
         elif nivel == 2:
-            for i in range(7,5,-1):
+            for i in range(7,4,-1):
                 corazones[i].grid_forget()
-                vidas = 5
-                mb.showinfo("Nivel 3", "Felicidades, has pasado al nivel 3")
-                interfaz.cambiar_enemigo()
-                ventana.update_idletasks()
-                
+            vidas = 4
+            for j in range(6):
+                corazones[j].configure(image=imagen_corazon)
+            mb.showinfo("Nivel 3", "Felicidades, has pasado al nivel 3")
+            label_level.configure(text="Nivel 3")
+            interfaz.cambiar_enemigo()
+            ventana.update_idletasks()
+        
         elif nivel == 3:
-            for i in range(5,3,-1):
+            for i in range(5,2,-1):
                 corazones[i].grid_forget()
-                vidas = 3
-                mb.showinfo("Nivel 4", "Felicidades, has pasado al nivel 4")
-                interfaz.cambiar_enemigo()
-                ventana.update_idletasks()
+            vidas = 2
+            for j in range(4):
+                corazones[j].configure(image=imagen_corazon)
+            mb.showinfo("Nivel 4", "Felicidades, has pasado al nivel 4")
+            label_level.configure(text="Nivel 4")
+            interfaz.cambiar_enemigo()
+            ventana.update_idletasks()
+        
         elif nivel == 4:
-            for i in range(3,1,-1):
+            for i in range(3,0,-1):
                 corazones[i].grid_forget()
-                vidas = 1
-                mb.showinfo("Nivel 5", "Felicidades, has pasado al nivel 5")
-                interfaz.cambiar_enemigo()
-                ventana.update_idletasks()
+            vidas = 0
+            for j in range(2):
+                corazones[j].configure(image=imagen_corazon)
+            mb.showinfo("Nivel 5", "Felicidades, has pasado al nivel 5")
+            label_level.configure(text="Nivel 5")
+            interfaz.cambiar_enemigo()
+            mb.showinfo("felicidades", "felicidades has ganado este juego ")
+            ventana.destroy()
+            ventana.update_idletasks()
                 
     else:
         x = 100
@@ -73,7 +91,7 @@ def fuego(fuego, label):  # <-- animacion de fallos
     label.update_idletasks()
 
 
-def kamehameha(gif, label_gif, window, corazones):  # <-- animacion de aciertos
+def kamehameha(gif, label_gif, window, corazones, label_level,imagen_corazon):  # <-- animacion de aciertos
     global x, y, j, vidas, puntos
 
     if x < 1000:
@@ -89,14 +107,14 @@ def kamehameha(gif, label_gif, window, corazones):  # <-- animacion de aciertos
         # Hide the image after 100 ms
         window.after(100, label_gif.place_forget)
         # Call kamehameha again after 100 ms
-        window.after(100,lambda: kamehameha(gif, label_gif, window, corazones))
+        window.after(100,lambda: kamehameha(gif, label_gif, window, corazones,label_level,imagen_corazon))
     else:
-        puntuacion(window, corazones)
+        puntuacion(window, corazones, label_level,imagen_corazon)
 
 # verifica que la respuesta este bien y que la lista no haya acabado
 
 
-def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire):
+def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire, label_level,imagen_corazon):
     global i, vidas, puntos, x, y, j
     # <--- Aquí se compara la respuesta del usuario con la respuesta correcta
     if respond == respond_entry.get().strip():
@@ -106,14 +124,14 @@ def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazon
         puntos += 1
         # <--- Aquí se actualiza el número de aciertos
         aciertos.configure(text="Aciertos: "+str(puntos))
-        kamehameha(gif, label_gif, ventana, corazones)
+        kamehameha(gif, label_gif, ventana, corazones,label_level,imagen_corazon)
         i += 1  # <--- Aquí se aumenta el contador de preguntas
         if i == len(ask):  # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
             i = 0  # <--- Aquí se reinicia el contador de preguntas
             # <--- Aquí se obtienen nuevas preguntas
             preguntas, respuestas, pregunta = f.random_f()
             # <--- Aquí se llama a la función que modifica la interfaz
-            return modificar_interfaz(preguntas, pregunta, respuestas, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire)
+            return modificar_interfaz(preguntas, pregunta, respuestas, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire, label_level,imagen_corazon)
         label_see.configure(text=ask[i])  # <--- Aquí se actualiza la pregunta
         label_see.update_idletasks()  # <-- actualiza la interfaz
         # <--- Aquí se borra el contenido del entry
@@ -146,14 +164,14 @@ def verificar(respond, respond_entry, label_see, ask, label_ask, button, corazon
             # <--- Aquí se obtienen nuevas preguntas
             preguntas, respuestas, pregunta = f.random_f()
             # <--- Aquí se llama a la función que modifica la interfaz
-            return modificar_interfaz(preguntas, pregunta, respuestas, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire)
+            return modificar_interfaz(preguntas, pregunta, respuestas, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire, label_level,imagen_corazon)
         label_see.configure(text=ask[i])  # <--- Aquí se actualiza la pregunta
         label_see.update_idletasks()  # <-- actualiza la interfaz
         return False
 
 
 # <--- Aquí se crea la función que modifica la interfaz
-def modificar_interfaz(ask, see, respond, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire):
+def modificar_interfaz(ask, see, respond, label_ask, button, respond_entry, label_see, corazones, ventana, foto, aciertos, gif, label_gif, fire, label_fire, label_level,imagen_corazon):
     global i, vidas  # <--- Aquí se declara la variable global i
     if i == len(ask):  # <--- Aquí se verifica si la lista de preguntas se acabó para reiniciarla
         i = 0
@@ -164,4 +182,4 @@ def modificar_interfaz(ask, see, respond, label_ask, button, respond_entry, labe
     button.focus_set()  # <--- Aquí se le da el foco al botóny
     button.configure(command=lambda: verificar(respond[i], respond_entry, label_see, ask, label_ask, button, corazones,
                      # <--- Aquí se le asigna la función verificar al botón
-                                               ventana, foto, aciertos, gif, label_gif, fire, label_fire))
+                                               ventana, foto, aciertos, gif, label_gif, fire, label_fire, label_level,imagen_corazon))
