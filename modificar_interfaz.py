@@ -69,7 +69,10 @@ def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se 
             mb.showinfo("felicidades", "felicidades has ganado este juego ")
             ventana.destroy()
             ventana.update_idletasks()
-                
+        elif nivel == 5:    
+            mb.showinfo("felicidades", "felicidades has ganado este juego ")
+            ventana.destroy()
+            ventana.update_idletasks()   
     else:
         x = 100
         y = 459

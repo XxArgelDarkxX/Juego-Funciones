@@ -18,13 +18,20 @@ global indice_enemigo, video_label, cap
 indice_enemigo = 0
 video_label = None
 cap = Noneindice_enemigo = 0
-
+enemigos_png = ["dragon_1.png", "enemigo1.png", "enemigo2.png", "enemigo3.png", "enemigo4.png"]
 
 def juego():
     global cap,video_label
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
-    ventana.geometry("1550x900")
+    # Calculate position x and y coordinates
+    window_width = 1540
+    window_height = 930
+    position_top = 0
+    position_left = -10
+
+    # Set the geometry
+    ventana.geometry(f"{window_width}x{window_height}+{position_left}+{position_top}")
     ventana.configure(fg_color="#033247")
     ventana.resizable(False, False)
 
@@ -110,17 +117,6 @@ def juego():
     
     # lista de enemigos
     
-    
-    
-
-    
-
-       
-        
-  
-    
-    
-    
     cap = cv2.VideoCapture("dragon.mp4")
     cap2 = cv2.VideoCapture('lapiz.mp4')
 
@@ -138,19 +134,21 @@ def juego():
             if not ret:
                 cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
-
-            image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image = Image.fromarray(image)
-            image = ctk.CTkImage(light_image=image, size=(500, 500))
-            video_label.configure(image=image)
-            video_label.image = image
-            time.sleep(0.05)
+            try:
+                image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                image = Image.fromarray(image)
+                image = ctk.CTkImage(light_image=image, size=(500, 500))
+                video_label.configure(image=image)
+                video_label.image = image
+                time.sleep(0.05)
+            except:
+                break
     
     def cambiar_enemigo():
         global indice_enemigo, video_label, cap
         enemigos = ["dragon.mp4", "enemigo.mp4", "enemigo1.mp4", "enemigo2.mp4", "enemigo3.mp4"]
         indice_enemigo += 1  # Move to the next enemy
-        if indice_enemigo >= len(enemigos):  # If it exceeds the number of enemies, reset
+        if indice_enemigo > len(enemigos):  # If it exceeds the number of enemies, reset
             indice_enemigo = 0
         
         # Release the current video capture
@@ -187,14 +185,16 @@ def juego():
             if not ret:
                 cap2.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 continue
-
-            frame = cv2.resize(frame, (200, 200))
-            image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image = Image.fromarray(image)
-            image = ctk.CTkImage(light_image=image, size=(200, 200))
-            video_label2.configure(image=image)
-            video_label2.image = image
-            time.sleep(0.03)
+            try:   
+                frame = cv2.resize(frame, (200, 200))
+                image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                image = Image.fromarray(image)
+                image = ctk.CTkImage(light_image=image, size=(200, 200))
+                video_label2.configure(image=image)
+                video_label2.image = image
+                time.sleep(0.03)
+            except:
+                break
             
 
    
@@ -233,13 +233,13 @@ def info(window):
     . Aquí te las presentamos de manera clara y sencilla:
 
     Objetivo del Juego:
-    Derrotar al Dragón obteniendo 10 aciertos.
+    Derrotar a los enemigos que se volveran mas complicados cada vez.
     Reglas del Juego:
     Aciertos y Fallas:
 
     *Cada acción que realices en el juego puede resultar en un acierto o una falla.
-    *Necesitas acumular 10 aciertos para derrotar al Dragón y ganar el juego.
-    *Si acumulas 10 fallas, tu personaje morirá y el juego terminará. """
+    *Necesitas acumular aciertos para derrotar a los distintos jefes y ganar el juego.
+    *Si tus corazones se acaban, tu personaje morirá y el juego terminará. """
 
     def update_text(i=0):
         if i < len(message):
@@ -255,18 +255,34 @@ def menu():
     ventana = ctk.CTk()
     ventana.title("Juego Funciones")
     ventana.configure(fg_color=BACKGROUND_COLOR)
-    ventana.geometry("1550x900")
+
+    # Calculate position x and y coordinates
+    window_width = 1540
+    window_height = 930
+    position_top = 0
+    position_left = -10
+
+    # Set the geometry
+    ventana.geometry(f"{window_width}x{window_height}+{position_left}+{position_top}")
     ventana.resizable(False, False)
 
-    # Dragon image frame
-    frame_dragon = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
-    frame_dragon.place(x=900, y=250)
-    imagen_dragon_menu = ctk.CTkImage(light_image=Image.open(
-        "dragon_1.png").resize((600, 600)), size=(600, 600))
-    label_dragon_menu = ctk.CTkLabel(
-        frame_dragon, text="", image=imagen_dragon_menu)
-    label_dragon_menu.grid(row=0, column=0)
+    # Enemy image frame
+    frame_enemy = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
+    frame_enemy.place(x=900, y=250)
+    imagen_enemy_menu = ctk.CTkImage(light_image=Image.open(
+        enemigos_png[0]).resize((600, 600)), size=(600, 600))
+    label_enemy_menu = ctk.CTkLabel(
+        frame_enemy, text="", image=imagen_enemy_menu)
+    label_enemy_menu.grid(row=0, column=0)
 
+    def update_image(i=0):
+        nonlocal label_enemy_menu, imagen_enemy_menu
+        imagen_enemy_menu = ctk.CTkImage(light_image=Image.open(
+            enemigos_png[i]).resize((600, 600)), size=(600, 600))
+        label_enemy_menu.configure(image=imagen_enemy_menu)
+        ventana.after(800, update_image, (i + 1) % len(enemigos_png))
+
+    update_image()
     # Pencil image frame
     frame_lapiz = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_lapiz.place(x=100, y=400)
@@ -286,28 +302,28 @@ def menu():
 
     # Main menu label
     frame_menu = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
-    frame_menu.place(x=650, y=50)
+    frame_menu.place(x=550, y=50)
     label_menu = ctk.CTkLabel(
         frame_menu, text="Juego de Funciones", font=("Kristen ITC", 30))
     label_menu.grid(row=5, column=0)
 
     # Play button frame
     frame_boton_jugar = ctk.CTkFrame(ventana)
-    frame_boton_jugar.place(x=650, y=200)
+    frame_boton_jugar.place(x=550, y=200)
     button_jugar = ctk.CTkButton(frame_boton_jugar, text="Jugar", font=(
         "Kristen ITC", 30), width=300, height=50, command=lambda: jugar(ventana))
     button_jugar.grid(row=0, column=0)
 
     # Info button frame
     frame_boton_info = ctk.CTkFrame(ventana)
-    frame_boton_info.place(x=650, y=400)
+    frame_boton_info.place(x=550, y=400)
     button_info = ctk.CTkButton(frame_boton_info, text="Información", font=(
         "Kristen ITC", 30), width=300, height=50, command=lambda: info(ventana))
     button_info.grid(row=0, column=0)
 
     # Exit button frame
     frame_boton_salir = ctk.CTkFrame(ventana)
-    frame_boton_salir.place(x=650, y=600)
+    frame_boton_salir.place(x=550, y=600)
     button_salir = ctk.CTkButton(frame_boton_salir, text="Salir", font=(
         "Kristen ITC", 30), width=300, height=50, command=ventana.destroy)
     button_salir.grid(row=0, column=0)
