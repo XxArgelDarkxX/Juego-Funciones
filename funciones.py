@@ -231,7 +231,7 @@ def inversa():
         ["G(x) = 3x - 2",[ "g^-1(x) = (x + 2) / 3"]],
         ["H(x) = (x + 4) / 5", ["h^-1(x) = 5x - 4"]],
         ["J(x) = (2x - 3) / 4", ["j^-1(x) = 2x+3/2"]],
-        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]]
+        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]],
         ["¿Una funcion que al aplicarse una funcion compuesta\ncon otra funcion produce el argumento?", ["verdadero"]]]
     
     funcion,inversa = random.choice(funciones_inversas)
