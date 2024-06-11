@@ -70,20 +70,21 @@ def lineal():
 def cuadratica():
     eleccion = 1
     ecuaciones_cuadraticas = [
-    ["x**2 - 4*x + 4 ", ["2", "2", "4"],["(2,0)"],["R","y>=0"]], #soluciones, vertice, rango
-    ["2*x**2 - 3*x + 1 ", ["1/2"," 1", "1"],["(3/4, -1/8)"],["R","y>=-1/8"]],
-    ["3*x**2 + 6*x + 3 ", ["-1", "-1", "3"],["(-1, 0)"],["R","y>=0"]],
-    ["x**2 + 5*x + 6 ", ["-3", "-2", "6"],["(-5/2,-1/4)"],["R","y>=-1/4"]],
-    ["4*x**2 - 4*x + 1 ", ["1/2", "1/2", "1"],["(1/2,0)"],["R","y>=0"]]
+                         #x1| x2|   y|  vertice|  domin| rango
+    ["x² - 4x + 4 ", ["2", "2", "4"],["2,0"],["R","y>=0"]], #soluciones, vertice, rango
+    ["2x² - 3x + 1 ", ["1/2"," 1", "1"],["3/4, -1/8"],["R","y>=-1/8"]],
+    ["3x² + 6x + 3 ", ["-1", "-1", "3"],["-1, 0"],["R","y>=0"]],
+    ["x² + 5x + 6 ", ["-3", "-2", "6"],["-5/2,-1/4"],["R","y>=-1/4"]],
+    ["4x² - 4x + 1 ", ["1/2", "1/2", "1"],["1/2,0"],["R","y>=0"]]
     ]
 
     ecuacion, soluciones, soluciones_vertice, rango_Dominio = random.choice(ecuaciones_cuadraticas)
-    pregunta = f"¡Rapido analiza la siguiente funcion: {ecuacion}"
+    pregunta = f"Rapido analiza la siguiente funcion: {ecuacion}"
     
     if eleccion == 1:
         
-        corte_x1 = "¿Encuentra el corte con el eje x1?"
-        corte_x2 ="¿Encuentra el corte con el eje x2?"
+        corte_x1 = "Encuentra el corte con el eje x1"
+        corte_x2 = "Encuentra el corte con el eje x2"
         corte_y = "¿Cual es el corte con el y?"
         vertice = "¿En que coordenadas se encuentra Vertice?"
         dominio = "¿Cual es el Dominio?"
@@ -110,22 +111,22 @@ def cuadratica():
             print("Incorrecto")
 def cubica():
     preguntas = ["Cuáles son los cortes con los ejes x e y", "Cuál es el dominio y el rango de la función"]
-    ecuaciones_cubicas = [  ["2x³ - 3x² - 11x + 6", ["0,6", "(3,0)","(0.5,0)","(-2,0)"], ["R","R"]],
-                          ["-x³ + 5x² - 2x + 7", ["0,7", "(3.03,0)","(-0.86,0)","(2.83,0)"], ["R","R"]],
-                          ["3x³ + 2x² - x + 1", ["0,1", "(-1,0)","(-0.34,0)","(0.64,0)"], ["R","R"]],
-                          ["2x³ - 3x² + 4x - 5", ["0,-5", "(1.33,0)","(-0.89,0)","(1.06,0)"], ["R","R"]],
-                          ["-4x³ + x² + 3x - 8", ["0,-8", "(2.27,0)","(-1.08,0)","(0.88,0)"], ["R","R"]],
-                          ["5x³ - 6x² + 7x + 2", ["0,2", "(-0.23,0)","(-1.21,0)","(0.79,0)"], ["R","R"]],
-                          ["x³ - 4x² + 6x - 3",  ["0,-3", "(1,0)","(1,0)","(3,0)"], ["R", "R"]],
-                          ["-2x³ + 3x² - 5x + 4", ["0,4", "(-1.22,0)","(1.28,0)","(0.93,0)"], ["R","R"]]]
+    ecuaciones_cubicas = [  ["2x³ - 3x² - 11x + 6", ["0,6", "3,0","0.5,0","-2,0"], ["R","R"]],
+                          ["-x³ + 5x² - 2x + 7", ["0,7", "3.03,0","-0.86,0","2.83,0"], ["R","R"]],
+                          ["3x³ + 2x² - x + 1", ["0,1", "-1,0","-0.34,0","0.64,0"], ["R","R"]],
+                          ["2x³ - 3x² + 4x - 5", ["0,-5", "1.33,0","-0.89,0","1.06,0"], ["R","R"]],
+                          ["-4x³ + x² + 3x - 8", ["0,-8", "2.27,0","-1.08,0","0.88,0"], ["R","R"]],
+                          ["5x³ - 6x² + 7x + 2", ["0,2", "-0.23,0","-1.21,0","0.79,0"], ["R","R"]],
+                          ["x³ - 4x² + 6x - 3",  ["0,-3", "1,0","1,0","3,0"], ["R", "R"]],
+                          ["-2x³ + 3x² - 5x + 4", ["0,4", "-1.22,0","1.28,0","0.93,0"], ["R","R"]]]
     pregunta = random.choice(preguntas)
     funcion, cortes, dominio_rango = random.choice(ecuaciones_cubicas)
     mensaje = f"Rapido, analiza la funcion {funcion}"
     if pregunta == preguntas[0]:
         corte_y = "Cual es el corte en y (con este formato: 0,y): "
-        corte_x1 = "Cual es el corte en x1 (con este formato: (x,0)):"
-        corte_x2 = "Cual es el corte en x2 (con este formato: (x,0)):"
-        corte_x3 = "Cual es el corte en x3 (con este formato: (x,0)):"
+        corte_x1 = "Cual es el corte en x1 (con este formato: x,0):"
+        corte_x2 = "Cual es el corte en x2 (con este formato: x,0):"
+        corte_x3 = "Cual es el corte en x3 (con este formato: x,0):"
         lista_preguntas=[corte_y,corte_x1,corte_x2,corte_x3]
         lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
         return lista_preguntas,lista_respuestas,mensaje
@@ -140,11 +141,11 @@ def f_raiz_cuadrada():
     global suma4
     suma4 = random.randint(1, 5)
     functions = [
-        ["sqrt(x)", "x|x>=0", "0", "0"],                              # Función raíz cuadrada de x
-        ["sqrt(x^2 - 9)", "x|x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
+        ["sqrt(x)", "x>=0", "0", "0"],                              # Función raíz cuadrada de x
+        ["sqrt(x^2 - 9)", "x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
         ["sqrt(4x^2 + 16x + 16)", "R", "-2", "-2", "4"],  # Función raíz cuadrada de 4x^2 + 16x + 16
-        ["sqrt(x-1)", "x|x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
-        ["sqrt(4-x^2)", "x|x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
+        ["sqrt(x-1)", "x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
+        ["sqrt(4-x^2)", "x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
     ]
     
     if suma4 == 1:
@@ -212,10 +213,10 @@ def parte_entera():
 def f_valor_absoluto():
     lista_pregunta = ["¡Encuentra los puntos donde la funcion se anula!"]  
     funciones_absolutas = [
-        ["f(x)= |3X**2-75|",["+-5"]],
-        ["g(x)= |2x**2-32|",["+-4"]],
-        ["h(x)=|4x**2-36|",["+-3"]],
-        ["j(x)=|5x**2-25|",["+-1"]]
+        ["f(x)= |3X²-75|",["+-5"]],
+        ["g(x)= |2x²-32|",["+-4"]],
+        ["h(x)=|4x²-36|",["+-3"]],
+        ["j(x)=|5x²-25|",["+-1"]]
         ]
         
     funcion,absoluto = random.choice(funciones_absolutas)
@@ -227,30 +228,31 @@ def f_valor_absoluto():
 def inversa():
     lista_pregunta = ["¡Encuentra las la funcion inversa!"]
     funciones_inversas = [
-        ["F(x) = 2x + 1",[ "f^-1(x) = (x - 1) / 2"]],
-        ["G(x) = 3x - 2",[ "g^-1(x) = (x + 2) / 3"]],
-        ["H(x) = (x + 4) / 5", ["h^-1(x) = 5x - 4"]],
-        ["J(x) = (2x - 3) / 4", ["j^-1(x) = 2x+3/2"]],
-        ["K(x) = (x - 7) / 3", ["k^-1(x) = 3x + 7"]],
+        ["F(x) = 2x + 1", ["F^-1(x)=(x-1)/2"]],
+        ["G(x) = 3x - 2", ["G^-1(x)=(x+2)/3"]],
+        ["H(x) = (x + 4) / 5", ["H^-1(x)=5x-4"]],
+        ["J(x) = (2x - 3) / 4", ["J^-1(x)=2x+3/2"]],
+        ["K(x) = (x - 7) / 3", ["K^-1(x)=3x+7"]],
         ["¿Una funcion que al aplicarse una funcion compuesta\ncon otra funcion produce el argumento?", ["verdadero"]]]
     
     funcion,inversa = random.choice(funciones_inversas)
-    preguntas = f"Rapido analiza la siguente funcion: {funcion}"
-    
+    if funcion != funciones_inversas[5][0]:
+        preguntas = f"Rapido analiza la siguente funcion: {funcion}"
+    else:
+        preguntas = f"Rapido analiza la siguente pregunta: {funcion}"
     lista_respuestas = inversa
     
     return lista_pregunta,lista_respuestas,preguntas
     
-
 def logaritmica():
     lista_pregunta = ["Analiza la pregunta"]
     
     preguntas_logaritmicas = [["¿cual es la base que tiene el logaritmo? natural", ["e"]],
     ["¿cual es la base que tiene el logaritmo si no se especifica la base?", ["10"]],
-    ["segun la propiedad de los logaritmos log(a*b) es igual a \nlog(a) + log(b), ¿verdadero o falso?", ["verdadero"]],
-    ["segun la propiedad de los logaritmos log(a/b) es  igual a\n log(a) * log(b), ¿verdadero o falso?", ["falso"]],
-    ["¿la funcione inversa del logaritmo es x**2¿ verdadero o falso?", ["falso"]],
-    ["¿cual es el dominio de f(x) = log(x**2 - 4)", ["(-oo,-2)u (2,oo)"]]]
+    ["segun la propiedad de los logaritmos log(ab) es igual a \nlog(a) + log(b), ¿verdadero o falso?", ["verdadero"]],
+    ["segun la propiedad de los logaritmos log(a/b) es  igual a\n log(a)  log(b), ¿verdadero o falso?", ["falso"]],
+    ["¿la funcione inversa del logaritmo es x²¿ verdadero o falso?", ["falso"]],
+    ["¿cual es el dominio de f(x) = log(x² - 4)", ["(-oo,-2)u (2,oo)"]]]
     funcion,respuesta = random.choice(preguntas_logaritmicas)
     preguntas = f" {funcion}"
     return lista_pregunta,respuesta,preguntas
@@ -260,9 +262,9 @@ def exponencial():
     
     preguntas_exponenciales = [["¿la funcion inversa de la funcion exponencial es el logaritmo? \nverdadero o falso", ["verdadero"]],
                                ["¿Qué representa la base en una función exponencial?", ["la tasa de crecimiento o decrecimiento"]],
-                               ["¿la funciones f(x)= 2**x es creciente o decreciente?",[ "creciente"]],
+                               ["¿la funciones f(x)= 2x es creciente o decreciente?",[ "creciente"]],
                                 ["¿el dominio de una funciones exponencial son todos los reales? \nverdadero o falso", ["verdadero"]],
-                                ["¿cuales de las siguentes funciones es una funcion exponencias?\n a) f(x)=mx+b b) f(x)= x**2 c) f(x) = (1/2)**x",["c"]]]
+                                ["¿cuales de las siguentes funciones es una funcion exponencias?\n a) f(x)=mx+b b) f(x)= x² c) f(x) = (1/2)x",["c"]]]
     
     funcion,respuesta = random.choice(preguntas_exponenciales)
     preguntas = f" {funcion}"
@@ -271,10 +273,10 @@ def exponencial():
 def hiperbolicas():
     lista_pregunta = ["Analiza la pregunta"]
     
-    preguntas_hiperbolicas = [["¿la funcion inversa de f(X) = sinh(x) es f^-1(x) = ln(x + sqrt(x**2 + 1))?\nverdadero o falso", ["verdadero"]],
-                              ["¿la funcion inversa de f(X) = cosh(x) es f^-1(x) = ln(x + sqrt(x**2 - 2))?\nverdadero o falso", ["falso"]],
-                              ["Cosh (x) = (e**x + e**-x) / 2 \n verdadero o falso", ["verdadero"]],
-                              ["sinh(x) = (e**x - e**-x) / 4 \n verdadero o falso", ["falso"]]]
+    preguntas_hiperbolicas = [["¿la funcion inversa de f(X) = sinh(x) es f^-1(x) = ln(x + sqrt(x² + 1))?\nverdadero o falso", ["verdadero"]],
+                              ["¿la funcion inversa de f(X) = cosh(x) es f^-1(x) = ln(x + sqrt(x² - 2))?\nverdadero o falso", ["falso"]],
+                              ["Cosh (x) = (ex + e-x) / 2 \n verdadero o falso", ["verdadero"]],
+                              ["sinh(x) = (ex - e-x) / 4 \n verdadero o falso", ["falso"]]]
                             
 
     funcion,respuesta = random.choice(preguntas_hiperbolicas)
@@ -283,21 +285,21 @@ def hiperbolicas():
 
 def impar_par():
     lista_pregunta = ["Analiza la pregunta"]
-    preguntas_pares_impares = [["¿la funcion f(x) = x**2 es par o impar?", ["par"]],
+    preguntas_pares_impares = [["¿la funcion f(x) = x² es par o impar?", ["par"]],
                                ["¿la funcion f(x) = cos(x) es par o impar?", ["par"]],
-                               ["¿la funcion f(x) = x**4 es par o impar?", ["par"]],
-                               ["¿la funcion f(x) = x**5 es par o impar?", ["impar"]],
-                               ["¿la funcion f(x) = x**3-x es par o impar?", ["impar"]]]
+                               ["¿la funcion f(x) = x⁴ es par o impar?", ["par"]],
+                               ["¿la funcion f(x) = x⁵ es par o impar?", ["impar"]],
+                               ["¿la funcion f(x) = x³-x es par o impar?", ["impar"]]]
     funcion,respuesta = random.choice(preguntas_pares_impares)
     preguntas = f" {funcion}"
     return lista_pregunta,respuesta,preguntas
 
 def inyectibilidad():
     lista_pregunta = ["Analiza la pregunta"]
-    preguntas_inyectibilidad = [["¿la funcion f(x) = x**2 es inyectiva?\nverdadero o falso", ["falso"]],
+    preguntas_inyectibilidad = [["¿la funcion f(x) = x² es inyectiva?\nverdadero o falso", ["falso"]],
                                 ["¿la funcion f(X) = 2x -3 es inyectiva?\nverdadero o falso", ["verdadero"]],
                               ["en una funcion inyectiva, cada valor de x tiene un unico valor de y asociado\nverdadero o falso", ["verdadero"]],
-                              ["¿la funcion f(x) = x**3 es inyectiva?\nverdadero o falso", ["verdadero"]]]
+                              ["¿la funcion f(x) = x³ es inyectiva?\nverdadero o falso", ["verdadero"]]]
                               
     funcion,respuesta = random.choice(preguntas_inyectibilidad)
     preguntas = f" {funcion}"

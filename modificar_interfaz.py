@@ -32,7 +32,6 @@ def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se 
             vidas = 7
             for j in range(8):
                 corazones[j].configure(image=imagen_corazon)
-            interfaz.cambiar_enemigo()
             ventana.update_idletasks()
         
         elif nivel == 2:
@@ -43,7 +42,6 @@ def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se 
                 corazones[j].configure(image=imagen_corazon)
             mb.showinfo("Nivel 3", "Felicidades, has pasado al nivel 3")
             label_level.configure(text="Nivel 3")
-            interfaz.cambiar_enemigo()
             ventana.update_idletasks()
         
         elif nivel == 3:
@@ -54,7 +52,6 @@ def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se 
                 corazones[j].configure(image=imagen_corazon)
             mb.showinfo("Nivel 4", "Felicidades, has pasado al nivel 4")
             label_level.configure(text="Nivel 4")
-            interfaz.cambiar_enemigo()
             ventana.update_idletasks()
         
         elif nivel == 4:
@@ -65,7 +62,6 @@ def puntuacion(ventana,corazones, label_level,imagen_corazon):  # <--- Aquí se 
                 corazones[j].configure(image=imagen_corazon)
             mb.showinfo("Nivel 5", "Felicidades, has pasado al nivel 5")
             label_level.configure(text="Nivel 5")
-            interfaz.cambiar_enemigo()
             mb.showinfo("felicidades", "felicidades has ganado este juego ")
             ventana.destroy()
             ventana.update_idletasks()

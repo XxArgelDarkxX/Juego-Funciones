@@ -14,11 +14,9 @@ BACKGROUND_COLOR = "#033247"
 
 # Main game function
 
-global indice_enemigo, video_label, cap
-indice_enemigo = 0
+global video_label, cap
 video_label = None
-cap = Noneindice_enemigo = 0
-enemigos_png = ["dragon_1.png", "enemigo1.png", "enemigo2.png", "enemigo3.png", "enemigo4.png"]
+cap = None
 
 def juego():
     global cap,video_label
@@ -92,7 +90,7 @@ def juego():
 
     # Frame for video 2
     frame_video2 = ctk.CTkFrame(ventana, fg_color="red")
-    frame_video2.place(x=-70, y=500)
+    frame_video2.place(x=-10, y=500)
     video_label2 = ctk.CTkLabel(frame_video2, text="", font=("Arial", 20))
     video_label2.grid(row=0, column=0)
 
@@ -143,41 +141,6 @@ def juego():
                 time.sleep(0.05)
             except:
                 break
-    
-    def cambiar_enemigo():
-        global indice_enemigo, video_label, cap
-        enemigos = ["dragon.mp4", "enemigo.mp4", "enemigo1.mp4", "enemigo2.mp4", "enemigo3.mp4"]
-        indice_enemigo += 1  # Move to the next enemy
-        if indice_enemigo > len(enemigos):  # If it exceeds the number of enemies, reset
-            indice_enemigo = 0
-        
-        # Release the current video capture
-        if cap is not None and cap.isOpened():
-            cap.release()
-        
-        # Update the video capture with the new enemy
-        cap = cv2.VideoCapture(enemigos[indice_enemigo])
-    
-        # Play the new video
-        def play_new_video():
-            while True:
-                ret, frame = cap.read()
-                if not ret:
-                    cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-                    continue
-                
-                image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                image = Image.fromarray(image)
-                image = ctk.CTkImage(light_image=image, size=(500, 500))
-                
-                # Use the Tkinter event loop to update the image
-                ventana.after(0, lambda img=image: video_label.configure(image=img))
-                time.sleep(0.05)
-    
-        # Start a new thread for the new video
-        thread = threading.Thread(target=play_new_video)
-        thread.daemon = True  # Ensure thread exits when main loop exits
-        thread.start()
 
     def play_video2():
         while True:
@@ -195,10 +158,6 @@ def juego():
                 time.sleep(0.03)
             except:
                 break
-            
-
-   
-        
         
     # Create and start new threads for playing videos
     thread = threading.Thread(target=play_video)
@@ -271,19 +230,11 @@ def menu():
     frame_enemy = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_enemy.place(x=900, y=250)
     imagen_enemy_menu = ctk.CTkImage(light_image=Image.open(
-        enemigos_png[0]).resize((600, 600)), size=(600, 600))
+        "dragon_1.png").resize((600, 600)), size=(600, 600))
     label_enemy_menu = ctk.CTkLabel(
         frame_enemy, text="", image=imagen_enemy_menu)
     label_enemy_menu.grid(row=0, column=0)
 
-    def update_image(i=0):
-        nonlocal label_enemy_menu, imagen_enemy_menu
-        imagen_enemy_menu = ctk.CTkImage(light_image=Image.open(
-            enemigos_png[i]).resize((600, 600)), size=(600, 600))
-        label_enemy_menu.configure(image=imagen_enemy_menu)
-        ventana.after(800, update_image, (i + 1) % len(enemigos_png))
-
-    update_image()
     # Pencil image frame
     frame_lapiz = ctk.CTkFrame(ventana, fg_color=BACKGROUND_COLOR)
     frame_lapiz.place(x=100, y=400)
