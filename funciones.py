@@ -71,11 +71,11 @@ def cuadratica():
     eleccion = 1
     ecuaciones_cuadraticas = [
                          #x1| x2|   y|  vertice|  domin| rango
-    ["x² - 4x + 4 ", ["2", "2", "4"],["(2,0)"],["R","y>=0"]], #soluciones, vertice, rango
+    ["x² - 4x + 4 ", ["2", "", "4"],["(2,0)"],["R","y>=0"]], #soluciones, vertice, rango
     ["2x² - 3x + 1 ", ["1/2"," 1", "1"],["(3/4, -1/8)"],["R","y>=-1/8"]],
-    ["3x² + 6x + 3 ", ["-1", "-1", "3"],["(-1,0)"],["R","y>=0"]],
+    ["3x² + 6x + 3 ", ["-1", "", "3"],["(-1,0)"],["R","y>=0"]],
     ["x² + 5x + 6 ", ["-3", "-2", "6"],["(-5/2,-1/4)"],["R","y>=-1/4"]],
-    ["4x² - 4x + 1 ", ["1/2", "1/2", "1"],["(1/2,0)"],["R","y>=0"]]
+    ["4x² - 4x + 1 ", ["1/2", "", "1"],["(1/2,0)"],["R","y>=0"]]
     ]
 
     ecuacion, soluciones, soluciones_vertice, rango_Dominio = random.choice(ecuaciones_cuadraticas)
@@ -88,7 +88,7 @@ def cuadratica():
         corte_y = "¿Cual es el corte con el y?"
         vertice = "¿En que coordenadas se encuentra Vertice?"
         dominio = "¿Cual es el Dominio?"
-        rango = "¿Cual es el Rango?"
+        rango = "¿Cual es el Rango(y>=??"
         
         lista_preguntas=[corte_x1,corte_x2,corte_y,vertice,dominio,rango]
         lista_repuestas = [soluciones[0], soluciones[1], soluciones[2], soluciones_vertice[0], rango_Dominio[0], rango_Dominio[1]]
@@ -118,13 +118,24 @@ def cubica():
     funcion, cortes, dominio_rango = random.choice(ecuaciones_cubicas)
     mensaje = f"Rapido, analiza la funcion {funcion}"
     if pregunta == preguntas[0]:
-        corte_y = "Cual es el corte en y (con este formato: 0,y): "
-        corte_x1 = "Cual es el corte en x1 (con este formato: x,0):"
-        corte_x2 = "Cual es el corte en x2 (con este formato: x,0):"
-        corte_x3 = "Cual es el corte en x3 (con este formato: x,0):"
-        lista_preguntas=[corte_y,corte_x1,corte_x2,corte_x3]
-        lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
-        return lista_preguntas,lista_respuestas,mensaje
+        if funcion != ecuaciones_cubicas[1][0]:
+            corte_y = "Cual es el corte en y (coordenadas): "
+            corte_x1 = "Cual es el corte en x1 (con este formato: x,0):"
+            corte_x2 = "Cual es el corte en x2 (con este formato: x,0):"
+            corte_x3 = "Cual es el corte en x3 (con este formato: x,0):"
+            lista_preguntas=[corte_y,corte_x1,corte_x2,corte_x3]
+            lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
+            return lista_preguntas,lista_respuestas,mensaje
+        else:
+            
+            corte_y = "Cual es el corte en y (coordenadas): "
+            corte_x1 = "Cual es el corte en x1 (con este formato: x,0 ;si es necesario poner: sqrt(x):"
+            corte_x2 = "Cual es el corte en x2 (con este formato: x,0):"
+            corte_x3 = "Cual es el corte en x3 (con este formato: x,0):"
+            lista_preguntas=[corte_y,corte_x1,corte_x2,corte_x3]
+            lista_respuestas=[cortes[0],cortes[1],cortes[2],cortes[3]]
+            return lista_preguntas,lista_respuestas,mensaje
+            
     elif pregunta == preguntas[1]:
             dominio = "Cual es el dominio de la funcion?"
             rango = "Cual es el rango de la funcion?"
