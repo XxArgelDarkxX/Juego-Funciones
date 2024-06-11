@@ -141,11 +141,11 @@ def f_raiz_cuadrada():
     global suma4
     suma4 = random.randint(1, 5)
     functions = [
-        ["sqrt(x)", "x>=0", "0", "0"],                              # Función raíz cuadrada de x
-        ["sqrt(x^2 - 9)", "x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
-        ["sqrt(4x^2 + 16x + 16)", "R", "-2", "-2", "4"],  # Función raíz cuadrada de 4x^2 + 16x + 16
-        ["sqrt(x-1)", "x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
-        ["sqrt(4-x^2)", "x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
+        ["√(x)", "x>=0", "0", "0"],                              # Función raíz cuadrada de x
+        ["√(x²-9)", "x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x² - 9
+        ["√(4x²+16x+16)", "R", "-2", "-2", "4"],  # Función raíz cuadrada de 4x² + 16x + 16
+        ["√(x-1)", "x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
+        ["√(4-x²)", "x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x²
     ]
     
     if suma4 == 1:
@@ -199,9 +199,9 @@ def parte_entera():
     lista_pregunta = ["¿Cual es el resultado de la funcion(piso)?"]
     ejercicios_parte_entera = [
     ["F(x) = ⌊3.7⌋", ["3"]],
-    ["G(x) = ⌈sqrt 46⌉", ["6"]],
+    ["G(x) = ⌈√46⌉", ["6"]],
     ["H(x) = ⌊2.5⌋", ["2"]],
-    ["J(x) = ⌈sqrt 61⌉", ["7"]],
+    ["J(x) = ⌈√61⌉", ["7"]],
     ["K(x) = ⌊-pi⌋", ["-4"]]
     ]
     funcion,parte_entera = random.choice(ejercicios_parte_entera)  
@@ -233,7 +233,7 @@ def inversa():
         ["H(x) = (x + 4) / 5", ["H^-1(x)=5x-4"]],
         ["J(x) = (2x - 3) / 4", ["J^-1(x)=2x+3/2"]],
         ["K(x) = (x - 7) / 3", ["K^-1(x)=3x+7"]],
-        ["¿Una funcion que al aplicarse una funcion compuesta\ncon otra funcion produce el argumento?", ["verdadero"]]]
+        ["¿Una funcion que al aplicarse una funcion compuesta\ncon otra funcion produce el argumento? ¿verdadero o falso?", ["verdadero"]]]
     
     funcion,inversa = random.choice(funciones_inversas)
     if funcion != funciones_inversas[5][0]:
@@ -250,8 +250,8 @@ def logaritmica():
     preguntas_logaritmicas = [["¿cual es la base que tiene el logaritmo? natural", ["e"]],
     ["¿cual es la base que tiene el logaritmo si no se especifica la base?", ["10"]],
     ["segun la propiedad de los logaritmos log(ab) es igual a \nlog(a) + log(b), ¿verdadero o falso?", ["verdadero"]],
-    ["segun la propiedad de los logaritmos log(a/b) es  igual a\n log(a)  log(b), ¿verdadero o falso?", ["falso"]],
-    ["¿la funcione inversa del logaritmo es x²¿ verdadero o falso?", ["falso"]],
+    ["segun la propiedad de los logaritmos log(a/b) es  igual a\n log(a) * log(b), ¿verdadero o falso?", ["falso"]],
+    ["¿la funcion inversa del logaritmo es x² ¿verdadero o falso?", ["falso"]],
     ["¿cual es el dominio de f(x) = log(x² - 4)", ["(-oo,-2)u (2,oo)"]]]
     funcion,respuesta = random.choice(preguntas_logaritmicas)
     preguntas = f" {funcion}"
@@ -262,9 +262,9 @@ def exponencial():
     
     preguntas_exponenciales = [["¿la funcion inversa de la funcion exponencial es el logaritmo? \nverdadero o falso", ["verdadero"]],
                                ["¿Qué representa la base en una función exponencial?", ["la tasa de crecimiento o decrecimiento"]],
-                               ["¿la funciones f(x)= 2x es creciente o decreciente?",[ "creciente"]],
-                                ["¿el dominio de una funciones exponencial son todos los reales? \nverdadero o falso", ["verdadero"]],
-                                ["¿cuales de las siguentes funciones es una funcion exponencias?\n a) f(x)=mx+b b) f(x)= x² c) f(x) = (1/2)x",["c"]]]
+                               ["¿la funcion f(x)= 2ˣ es creciente o decreciente?",["creciente"]],
+                               ["¿el dominio de una funciones exponencial son todos los reales? \nverdadero o falso", ["verdadero"]],
+                               ["¿cuales de las siguentes funciones es una funcion exponencial?\n a) f(x)=mx+b   b) f(x)= x²    c) f(x) = (1/2)ˣ",["c"]]]
     
     funcion,respuesta = random.choice(preguntas_exponenciales)
     preguntas = f" {funcion}"
@@ -273,10 +273,10 @@ def exponencial():
 def hiperbolicas():
     lista_pregunta = ["Analiza la pregunta"]
     
-    preguntas_hiperbolicas = [["¿la funcion inversa de f(X) = sinh(x) es f^-1(x) = ln(x + sqrt(x² + 1))?\nverdadero o falso", ["verdadero"]],
-                              ["¿la funcion inversa de f(X) = cosh(x) es f^-1(x) = ln(x + sqrt(x² - 2))?\nverdadero o falso", ["falso"]],
-                              ["Cosh (x) = (ex + e-x) / 2 \n verdadero o falso", ["verdadero"]],
-                              ["sinh(x) = (ex - e-x) / 4 \n verdadero o falso", ["falso"]]]
+    preguntas_hiperbolicas = [["¿la funcion inversa de f(X) = sinh(x) es f⁻¹(x) = ln(x + sqrt(x² + 1))?\nverdadero o falso", ["verdadero"]],
+                              ["¿la funcion inversa de f(X) = cosh(x) es f⁻¹(x) = ln(x + sqrt(x² - 2))?\nverdadero o falso", ["falso"]],
+                              ["Cosh (x) = (eˣ + e⁻ˣ) / 2 \n verdadero o falso", ["verdadero"]],
+                              ["sinh(x) = (eˣ - e⁻ˣ) / 4 \n verdadero o falso", ["falso"]]]
                             
 
     funcion,respuesta = random.choice(preguntas_hiperbolicas)
