@@ -238,7 +238,8 @@ def info(window):
     Aciertos y Fallas:
 
     *Cada acción que realices en el juego puede resultar en un acierto o una falla.
-    *Necesitas acumular aciertos para derrotar a los distintos jefes y ganar el juego.
+    *Necesitas llegar al nivel 5 para ganar pero cada que avances de nivel las vidas bajaran
+    *Para avanzar de nivel debes de hacer 3 aciertos.
     *Si tus corazones se acaban, tu personaje morirá y el juego terminará. """
 
     def update_text(i=0):
