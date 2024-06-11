@@ -7,7 +7,7 @@ import modificar_interfaz as mi
 
 
 def random_f(): #funcion de py para elegir una funcion aleatoria
-    funciones = ["funcion inyectividad","funcion hiperbolicas","funcion exponencial","funcion logaritmica","funcion inversa","funcion valor absoluto","funcion parte entera","funcion impar par","funcion cuadratica","funcion cubica","funcion raiz cuadrada","funcion lineal"]
+    funciones = ["funcion cubica","funciones lineal","funcion cuadratica","funcion raiz cuadrada","funcion parte entera","funcion valor absoluto","funcion inversa","funcion logaritmica"]
     random.shuffle(funciones)
 
     funcion_aleatoria = random.choice(funciones)
@@ -71,11 +71,11 @@ def cuadratica():
     eleccion = 1
     ecuaciones_cuadraticas = [
                          #x1| x2|   y|  vertice|  domin| rango
-    ["x² - 4x + 4 ", ["2", "2", "4"],["2,0"],["R","y>=0"]], #soluciones, vertice, rango
-    ["2x² - 3x + 1 ", ["1/2"," 1", "1"],["3/4, -1/8"],["R","y>=-1/8"]],
-    ["3x² + 6x + 3 ", ["-1", "-1", "3"],["-1, 0"],["R","y>=0"]],
-    ["x² + 5x + 6 ", ["-3", "-2", "6"],["-5/2,-1/4"],["R","y>=-1/4"]],
-    ["4x² - 4x + 1 ", ["1/2", "1/2", "1"],["1/2,0"],["R","y>=0"]]
+    ["x² - 4x + 4 ", ["2", "2", "4"],["(2,0)"],["R","y>=0"]], #soluciones, vertice, rango
+    ["2x² - 3x + 1 ", ["1/2"," 1", "1"],["(3/4, -1/8)"],["R","y>=-1/8"]],
+    ["3x² + 6x + 3 ", ["-1", "-1", "3"],["(-1,0)"],["R","y>=0"]],
+    ["x² + 5x + 6 ", ["-3", "-2", "6"],["(-5/2,-1/4)"],["R","y>=-1/4"]],
+    ["4x² - 4x + 1 ", ["1/2", "1/2", "1"],["(1/2,0)"],["R","y>=0"]]
     ]
 
     ecuacion, soluciones, soluciones_vertice, rango_Dominio = random.choice(ecuaciones_cuadraticas)
@@ -111,14 +111,9 @@ def cuadratica():
             print("Incorrecto")
 def cubica():
     preguntas = ["Cuáles son los cortes con los ejes x e y", "Cuál es el dominio y el rango de la función"]
-    ecuaciones_cubicas = [  ["2x³ - 3x² - 11x + 6", ["0,6", "3,0","0.5,0","-2,0"], ["R","R"]],
-                          ["-x³ + 5x² - 2x + 7", ["0,7", "3.03,0","-0.86,0","2.83,0"], ["R","R"]],
-                          ["3x³ + 2x² - x + 1", ["0,1", "-1,0","-0.34,0","0.64,0"], ["R","R"]],
-                          ["2x³ - 3x² + 4x - 5", ["0,-5", "1.33,0","-0.89,0","1.06,0"], ["R","R"]],
-                          ["-4x³ + x² + 3x - 8", ["0,-8", "2.27,0","-1.08,0","0.88,0"], ["R","R"]],
-                          ["5x³ - 6x² + 7x + 2", ["0,2", "-0.23,0","-1.21,0","0.79,0"], ["R","R"]],
-                          ["x³ - 4x² + 6x - 3",  ["0,-3", "1,0","1,0","3,0"], ["R", "R"]],
-                          ["-2x³ + 3x² - 5x + 4", ["0,4", "-1.22,0","1.28,0","0.93,0"], ["R","R"]]]
+    ecuaciones_cubicas = [  ["x³ - 3x² +2x", ["(0,0)", "(0,0)","(1,0)","(2,0)"], ["R","R"]],
+                          ["2x³ -4x", ["(0,0)", "(0,0","(sqrt(2),0)","(-sqrt(2),0)"], ["R","R"]],
+                          ["-(x+2)³-1", ["(0,-9)", "(-3,0)","",""], ["R","R"]]]
     pregunta = random.choice(preguntas)
     funcion, cortes, dominio_rango = random.choice(ecuaciones_cubicas)
     mensaje = f"Rapido, analiza la funcion {funcion}"
@@ -145,7 +140,7 @@ def f_raiz_cuadrada():
         ["sqrt(x^2 - 9)", "x<=-3,x>=3", "-3", "3", "0"],       # Función raíz cuadrada de x^2 - 9
         ["sqrt(4x^2 + 16x + 16)", "R", "-2", "-2", "4"],  # Función raíz cuadrada de 4x^2 + 16x + 16
         ["sqrt(x-1)", "x>=1", "1", "0"],                            # Función raíz cuadrada de x-1
-        ["sqrt(4-x^2)", "x-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
+        ["sqrt(4-x^2)", "x|-2<=x<=2", "-2", "2", "2"]              # Función raíz cuadrada de 4-x^2
     ]
     
     if suma4 == 1:
